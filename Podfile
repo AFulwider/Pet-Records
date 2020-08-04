@@ -9,6 +9,7 @@ target 'Pet Records' do
   #use_modular_headers!
   # Pods for Pet Records
 
+  # FIREBASE
    pod 'Firebase/Analytics'
    pod 'Firebase/Auth'
    pod 'Firebase/Firestore'
@@ -19,5 +20,6 @@ target 'Pet Records' do
    pod 'Firebase/Storage'
    pod 'BoringSSL-GRPC'
    
+   # THIRD PARTY
    pod 'SideMenu'
 end

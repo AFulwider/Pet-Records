@@ -278,7 +278,7 @@
 				CC0A234823E3871C003F1F8E /* Sources */,
 				CC0A234923E3871C003F1F8E /* Frameworks */,
 				CC0A234A23E3871C003F1F8E /* Resources */,
-				581FA0AAE4077884F6A51B86 /* [CP] Embed Pods Frameworks */,
+				2D6D7CDCBC72BCB79837D471 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -337,7 +337,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		581FA0AAE4077884F6A51B86 /* [CP] Embed Pods Frameworks */ = {
+		2D6D7CDCBC72BCB79837D471 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -543,7 +543,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

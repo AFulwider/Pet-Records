@@ -13,8 +13,9 @@ class WelcomeScreenViewController: UIViewController {
     
     let signUpButton = SigninButtonCustom()
     let logInButton = SigninButtonCustom()
+    let tempButton = SigninButtonCustom()
     let backgroundImageView = UIImageView()
-        
+        var count = 0
     override func viewDidLoad() {
         super.viewDidLoad()
         if Auth.auth().currentUser != nil {
@@ -30,13 +31,15 @@ class WelcomeScreenViewController: UIViewController {
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+//        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
     }
     
     func viewLayout(){
         view.addSubview(backgroundImageView)
+        view.addSubview(tempButton)
         view.addSubview(signUpButton)
         view.addSubview(logInButton)
+        tempButton.translatesAutoresizingMaskIntoConstraints = false
         signUpButton.translatesAutoresizingMaskIntoConstraints  = false
         logInButton.translatesAutoresizingMaskIntoConstraints   = false
         
@@ -61,6 +64,24 @@ class WelcomeScreenViewController: UIViewController {
         logInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         logInButton.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
         logInButton.setTitle("Log in", for: .normal)
+        
+        // temp button
+        tempButton.bottomAnchor.constraint(equalTo: logInButton.topAnchor, constant: -20).isActive = true
+        tempButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        tempButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        tempButton.addTarget(self, action: #selector(tempButtonTapped), for: .touchUpInside)
+        tempButton.setTitle("Temp Button", for: .normal)
+        
+    }
+    
+    @objc func tempButtonTapped(_ sender: Any) {
+        if count == 0 {
+        view.backgroundColor = Colors.darkPurple
+            count = 1
+        } else {
+            view.backgroundColor = Colors.lightBlue
+            count = 0
+        }
     }
     
     @objc func signUpButtonTapped(_ sender: Any){
