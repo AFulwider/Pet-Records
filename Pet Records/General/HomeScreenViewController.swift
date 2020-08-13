@@ -97,7 +97,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
             }
             
             if(viewController is HomeScreenViewController) {
-                print("viewcontroller : \(navigationController?.navigationItem.title)")
+//                print("viewcontroller : \(navigationController?.navigationItem.title)")
             }
         }
         

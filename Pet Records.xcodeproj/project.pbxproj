@@ -570,7 +570,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LZP93YHFUD;
+				DEVELOPMENT_TEAM = ZD753K9SY2;
 				INFOPLIST_FILE = "Pet Records/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -589,7 +589,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = LZP93YHFUD;
+				DEVELOPMENT_TEAM = ZD753K9SY2;
 				INFOPLIST_FILE = "Pet Records/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

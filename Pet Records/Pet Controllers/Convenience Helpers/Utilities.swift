@@ -16,7 +16,7 @@ class Utilities {
     }
     
     static func styleTextFields(textfield:UITextField, placeholder:String, secureTextEntry:Bool){
-        let frameHeight = 40
+//        let frameHeight = 40
         let bottomLine = CALayer()
         bottomLine.frame = CGRect(x: 0, y: textfield.frame.height - 2, width: textfield.frame.width, height: 2)
         textfield.backgroundColor     = Colors.lightGray.withAlphaComponent(0.95)
