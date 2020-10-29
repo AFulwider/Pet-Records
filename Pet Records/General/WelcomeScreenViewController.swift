@@ -18,6 +18,8 @@ class WelcomeScreenViewController: UIViewController {
         var count = 0
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // if user is already logged in, go to home screen and that will then be the welcome screen each time user opens the app, until they log out.
         if Auth.auth().currentUser != nil {
             let vc = HomeScreenViewController()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate

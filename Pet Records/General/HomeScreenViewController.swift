@@ -227,9 +227,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         present(menu!, animated: true)
     }
     
-    
-    
-    
     // Sets the title to the name of currently logged in user, after first making sure someone is logged in.
     func fetchUserAndSetupNavBarTitle(){
         guard let uid = Auth.auth().currentUser?.uid else {
