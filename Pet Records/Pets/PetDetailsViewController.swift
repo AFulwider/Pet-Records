@@ -33,7 +33,7 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
     var appViewHeight : NSLayoutConstraint?
     var groomViewHeight : NSLayoutConstraint?
     
-    var pet : PetNSObject?
+    var pet : Pet?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,10 +49,10 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
         animateTableViewHeights()
         scrollViewHeight! += (vacViewHeight!.constant + appViewHeight!.constant + groomViewHeight!.constant)
         scrollView.contentSize = CGSize(width: view.frame.width, height: scrollViewHeight! + 195)
+        view.backgroundColor = .white
     }
     
     func setupUI() {

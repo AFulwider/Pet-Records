@@ -16,16 +16,12 @@ class SideMenuTableViewController: UITableViewController {
     let cellID = "cell"
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
 //        title = "TITLE"
                 self.navigationItem.title = "TITLE"
 //        tableView.reloadData()
         tableView.register(SideMenuTableViewCell.self, forCellReuseIdentifier: cellID)
         tableView.tableFooterView = UIView()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -95,7 +91,7 @@ class SideMenuTableViewController: UITableViewController {
         } catch let logoutError {
             print(logoutError)
         }
-        let vc = WelcomeScreenViewController()
+        let vc = WelcomeViewController()
         let navigationController = self.navigationController
         navigationController?.setViewControllers([vc], animated:false)
     }

@@ -11,8 +11,8 @@ import Firebase
 
 class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var petArray = [PetNSObject?]()
-    var currentPet : PetNSObject?
+    var petArray = [Pet?]()
+    var currentPet : Pet?
     
     let titleTF = UITextField()
     let startTimeTF = UITextField()
@@ -23,8 +23,8 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     var activeTextField = UITextField()
     let helpLabel = UILabel()
     
-    let submitButton = SigninButtonCustom()
-    let cancelButton = SigninButtonCustom()
+    let submitButton = SignInButtonCustom()
+    let cancelButton = SignInButtonCustom()
     let errorLabel = UILabel()
     
     let petSelectButton = UIButton()
@@ -40,7 +40,7 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-                let pet = PetNSObject(dictionary : dictionary)
+                let pet = Pet(dictionary : dictionary)
                 self.petArray.append(pet)
                 DispatchQueue.main.async(execute: {
                     self.petListTV.reloadData()
@@ -65,11 +65,7 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
         petListTV.delegate = self
         petListTV.dataSource = self
         petListView.isHidden = true
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     func loadPet(){

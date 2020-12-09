@@ -12,8 +12,8 @@ import Firebase
 class SinglePetVaccineViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     let vaccineTableView = UITableView()
-    var vaccines = [VaccineNSObject?]()
-    var pet : PetNSObject?
+    var vaccines = [Vaccine?]()
+    var pet : Pet?
     let cellid = "cellid"
     
     func loadPetDetails(){
@@ -21,7 +21,7 @@ class SinglePetVaccineViewController: UIViewController, UITableViewDelegate, UIT
         Database.database().reference().child("user_vaccines").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
                 if snapshot.childSnapshot(forPath: "pet_id").value as! String == (self.pet?.pid)! {
-                    let dict = VaccineNSObject(dictionary : dictionary)
+                    let dict = Vaccine(dictionary : dictionary)
                     self.vaccines.append(dict)
                     DispatchQueue.main.async(execute: {
                         self.vaccineTableView.reloadData()
@@ -36,11 +36,7 @@ class SinglePetVaccineViewController: UIViewController, UITableViewDelegate, UIT
         vaccineTableView.register(VacineTableViewCell.self, forCellReuseIdentifier: cellid)
         loadPetDetails()
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     func setupUI() {

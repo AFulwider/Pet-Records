@@ -26,42 +26,24 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
     
     var homeScreenController = HomeScreenViewController()
     
-    //TODO: - Add phone number requirement
-//    let backgroundImageView = UIImageView()
-    
-    
-    
-    
-    
-    
     let mainStackView = UIStackView()
     let buttonStackView = UIStackView()
-    
-    
-    
     
     let profileImageView   = UIImageView()
     let firstNameTextField = UITextField()
     let lastNameTextField  = UITextField()
     let emailTextField     = UITextField()
     let passwordTextField  = UITextField()
-    let errorLabel         = UILabel()
-    let submitButton       = SigninButtonCustom()
-    let cancelButton       = SigninButtonCustom()
-    let button             = UIButton()
     
+    let errorLabel         = UILabel()
+    
+    let submitButton       = SignInButtonCustom()
+    let cancelButton       = SignInButtonCustom()
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        view.backgroundColor = .white
+//        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
     }
     
     var vacViewHeight : NSLayoutConstraint?

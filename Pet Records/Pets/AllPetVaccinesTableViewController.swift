@@ -11,8 +11,8 @@ import Firebase
 
 class AllPetVaccinesTableViewController: UITableViewController, UIGestureRecognizerDelegate {
     let vaccineCellId = "vacCell"
-    var vaccines = [VaccineNSObject?]()
-    var pet : PetNSObject?
+    var vaccines = [Vaccine?]()
+    var pet : Pet?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -26,18 +26,14 @@ class AllPetVaccinesTableViewController: UITableViewController, UIGestureRecogni
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         tableView.register(VacineTableViewCell.self, forCellReuseIdentifier: vaccineCellId)
         title = "Vaccines"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     func loadVaccines(){
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("user_vaccines").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-                let vac = VaccineNSObject(dictionary : dictionary)
+                let vac = Vaccine(dictionary : dictionary)
                 self.vaccines.append(vac)
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()

@@ -14,10 +14,10 @@ import CoreLocation
 
 class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UITableViewDelegate, UITableViewDataSource {
     
-    var appointments = [AppointmentNSObject?]()
+    var appointments = [Appointment?]()
     
-    var pets = [PetNSObject?]()
-    var currentPet : PetNSObject?
+    var pets = [Pet?]()
+    var currentPet : Pet?
     //    let mapView = MKMapView()
     var locationManager:CLLocationManager!
     var activeTextField = UITextField()
@@ -35,8 +35,8 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
     let petListCancelButton = UIButton()
     let petListTV = UITableView()
     
-    let submitButton = SigninButtonCustom()
-    let cancelButton = SigninButtonCustom()
+    let submitButton = SignInButtonCustom()
+    let cancelButton = SignInButtonCustom()
     var petSelectedBool = Bool()
     var petSelectViewBool = Bool()
     
@@ -44,7 +44,7 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-                let pet = PetNSObject(dictionary : dictionary)
+                let pet = Pet(dictionary : dictionary)
                 self.pets.append(pet)
                 DispatchQueue.main.async(execute: {
                     self.petListTV.reloadData()
@@ -67,11 +67,7 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         petListTV.delegate = self
         petListTV.dataSource = self
         petListTV.register(PetSelectCell.self, forCellReuseIdentifier: petCellId)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     @objc func doneButtonTapped() {

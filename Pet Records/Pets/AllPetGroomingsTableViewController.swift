@@ -11,9 +11,9 @@ import Firebase
 
 class AllPetGroomingsTableViewController: UITableViewController {
     
-    var grooms = [GroomingNSObject?]()
+    var grooms = [Groom?]()
     let groomCellId = "groomCell"
-    var pet : PetNSObject?
+    var pet : Pet?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,18 +27,14 @@ class AllPetGroomingsTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         tableView.register(GroomingTableviewCell.self, forCellReuseIdentifier: groomCellId)
         title = "Grooming"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     func loadPetDetails(){
         if let uid = Auth.auth().currentUser?.uid {
             Database.database().reference().child("user_grooming").child(uid).observe(.childAdded) { (snapshot) in
                 if let dictionary = snapshot.value as? [String: AnyObject]   {
-                    let groom = GroomingNSObject(dictionary : dictionary)
+                    let groom = Groom(dictionary : dictionary)
                     self.grooms.append(groom)
                     DispatchQueue.main.async(execute: {
                         self.tableView.reloadData()

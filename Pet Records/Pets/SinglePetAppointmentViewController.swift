@@ -11,9 +11,9 @@ import Firebase
 
 class SinglePetAppointmentViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var appointments = [AppointmentNSObject?]()
+    var appointments = [Appointment?]()
     let appointmentTableView = UITableView()
-    var pet : PetNSObject?
+    var pet : Pet?
     let cellid = "cellid"
     
     func loadPetDetails(){
@@ -21,7 +21,7 @@ class SinglePetAppointmentViewController: UIViewController, UITableViewDelegate,
         Database.database().reference().child("user_appointments").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
                 if snapshot.childSnapshot(forPath: "pet_id").value as! String == (self.pet?.pid)! {
-                    let dict = AppointmentNSObject(dictionary : dictionary)
+                    let dict = Appointment(dictionary : dictionary)
                     self.appointments.append(dict)
                     DispatchQueue.main.async(execute: {
                         self.appointmentTableView.reloadData()
@@ -49,12 +49,7 @@ class SinglePetAppointmentViewController: UIViewController, UITableViewDelegate,
         appointmentTableView.register(AppointmentsTableViewCell.self, forCellReuseIdentifier: cellid)
         loadPetDetails()
         setupUI()
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     // MARK: - Table view data source

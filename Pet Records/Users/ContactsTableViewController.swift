@@ -11,9 +11,8 @@ import Firebase
 
 class ContactsTableViewController: UITableViewController {
     
-    var user = [UserNSObject]()
-    var activeUserMessage:ActiveUserMessagesTableViewController?
-    let contactsCellId = "contactsCellId"
+    var user = [User]()
+    let contactsCellId = "CellID"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,10 +35,13 @@ class ContactsTableViewController: UITableViewController {
     //MARK: - FETCHUSER()
     func fetchUser() {
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
+            print("1")
             if let dictionary = snapshot.value as? [String: AnyObject] {
-                let user = UserNSObject(dictionary: dictionary)
+                print("2")
+                let user = User(dictionary: dictionary)
                 self.user.append(user)
                 DispatchQueue.main.async(execute: {
+                    print("3")
                     self.tableView.reloadData()
                 })
             }
@@ -81,7 +83,7 @@ class ContactsTableViewController: UITableViewController {
         }
     }
     
-    func toContactProfileViewController(_ user: UserNSObject){
+    func toContactProfileViewController(_ user: User){
         let vc = ContactProfileViewController()
         vc.user = user
         print("CONTACTS VC USER ID: \(String(describing: user.id))")

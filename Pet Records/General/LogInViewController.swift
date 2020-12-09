@@ -22,18 +22,19 @@ class LogInViewController: UIViewController {
     let passwordTextField   = UITextField()
     let errorLabel          = UILabel()
     
-    let submitButton        = SigninButtonCustom()
-    let cancelButton        = SigninButtonCustom()
+    let submitButton        = SignInButtonCustom()
+    let cancelButton        = SignInButtonCustom()
         
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.setHidesBackButton(true, animated: true)
+        view.backgroundColor = Colors.lightPurple
         viewLayout()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+//        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
     }
     
     func viewLayout(){

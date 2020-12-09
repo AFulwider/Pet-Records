@@ -11,9 +11,9 @@ import Firebase
 
 class AllPetAppointmentsTableViewController: UITableViewController {
     
-    var appointments = [AppointmentNSObject?]()
+    var appointments = [Appointment?]()
     let appointmentCellId = "appCell"
-    var pet : PetNSObject?
+    var pet : Pet?
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,18 +27,14 @@ class AllPetAppointmentsTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         tableView.register(AppointmentsTableViewCell.self, forCellReuseIdentifier: appointmentCellId)
         title = "Appointments"
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     func loadPetDetails(){
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("user_appointments").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-                let dict = AppointmentNSObject(dictionary : dictionary)
+                let dict = Appointment(dictionary : dictionary)
                 self.appointments.append(dict)
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()

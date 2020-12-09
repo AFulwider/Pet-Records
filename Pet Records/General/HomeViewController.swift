@@ -12,7 +12,7 @@ import SideMenu
 
 class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
     
-    var pets = [PetNSObject?]()
+    var pets = [Pet?]()
     let cellID = "cell"
     
     let petCollectionView = UICollectionView()
@@ -23,7 +23,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-                let pet = PetNSObject(dictionary : dictionary)
+                let pet = Pet(dictionary : dictionary)
                 self.pets.append(pet)
                 DispatchQueue.main.async(execute: {
                     self.petCollectionView.reloadData()
@@ -46,11 +46,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(didTapMenu))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addPetTapped))
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     @objc func didTapMenu() {
@@ -112,7 +108,7 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
         } catch let logoutError {
             print(logoutError)
         }
-        let vc = WelcomeScreenViewController()
+        let vc = WelcomeViewController()
         let navigationController = self.navigationController
         navigationController?.setViewControllers([vc], animated:false)
     }

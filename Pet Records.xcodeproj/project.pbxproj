@@ -9,27 +9,22 @@
 /* Begin PBXBuildFile section */
 		CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A234F23E3871C003F1F8E /* AppDelegate.swift */; };
 		CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235123E3871C003F1F8E /* SceneDelegate.swift */; };
-		CC0A235423E3871C003F1F8E /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235323E3871C003F1F8E /* WelcomeScreenViewController.swift */; };
+		CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */; };
 		CC0A235723E3871C003F1F8E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC0A235523E3871C003F1F8E /* Main.storyboard */; };
 		CC0A235A23E3871C003F1F8E /* Pet_Records.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235823E3871C003F1F8E /* Pet_Records.xcdatamodeld */; };
 		CC0A235C23E3871D003F1F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC0A235B23E3871D003F1F8E /* Assets.xcassets */; };
 		CC0A235F23E3871D003F1F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC0A235D23E3871D003F1F8E /* LaunchScreen.storyboard */; };
 		CC0A236723E387F2003F1F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */; };
-		CC433780244E65C1007A9E04 /* PetNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43377F244E65C1007A9E04 /* PetNSObject.swift */; };
-		CC433782244E722B007A9E04 /* AppointmentNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC433781244E722B007A9E04 /* AppointmentNSObject.swift */; };
+		CC433780244E65C1007A9E04 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43377F244E65C1007A9E04 /* Pet.swift */; };
+		CC433782244E722B007A9E04 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC433781244E722B007A9E04 /* Appointment.swift */; };
 		CC433784244E7378007A9E04 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC433783244E7378007A9E04 /* AddPetViewController.swift */; };
 		CC4443EF24716127006C22C8 /* SinglePetVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4443EE24716127006C22C8 /* SinglePetVaccineViewController.swift */; };
 		CC4443F1247162DD006C22C8 /* SinglePetGroomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4443F0247162DD006C22C8 /* SinglePetGroomTableViewController.swift */; };
-		CC4531B1244B9F4D006722B3 /* ActiveUserMessagesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4531B0244B9F4D006722B3 /* ActiveUserMessagesTableViewController.swift */; };
 		CC4531B3244BA178006722B3 /* ContactProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4531B2244BA178006722B3 /* ContactProfileViewController.swift */; };
-		CC4531B5244BAE21006722B3 /* MessageNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4531B4244BAE21006722B3 /* MessageNSObject.swift */; };
-		CC4531B7244BC1DA006722B3 /* ChatInputContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4531B6244BC1DA006722B3 /* ChatInputContainerView.swift */; };
-		CC4531BB244BD2B9006722B3 /* SendMessagesCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4531BA244BD2B9006722B3 /* SendMessagesCollectionViewCell.swift */; };
-		CC45BA0424491FF9008903C7 /* SendMessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BA0324491FF9008903C7 /* SendMessagesViewController.swift */; };
 		CC45BA06244946CF008903C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BA05244946CF008903C7 /* Extensions.swift */; };
 		CC45C52E244F912600FC7679 /* PetDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45C52D244F912600FC7679 /* PetDetailsViewController.swift */; };
 		CC45C532244FD05100FC7679 /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45C531244FD05100FC7679 /* HeaderLabel.swift */; };
-		CC45CAE724425CBE00DBE5C9 /* UserNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAE624425CBE00DBE5C9 /* UserNSObject.swift */; };
+		CC45CAE724425CBE00DBE5C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAE624425CBE00DBE5C9 /* User.swift */; };
 		CC45CAEE24426E7200DBE5C9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAED24426E7200DBE5C9 /* UserProfileViewController.swift */; };
 		CC45CAF2244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAF1244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift */; };
 		CC45CAF4244276E100DBE5C9 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAF3244276E100DBE5C9 /* ContactsTableViewController.swift */; };
@@ -42,10 +37,10 @@
 		CC83B04C249D35BD0051E90F /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC83B04B249D35BD0051E90F /* SideMenuTableViewController.swift */; };
 		CC8666B8249C128C00DCD2B0 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8666B7249C128C00DCD2B0 /* HomeViewController.swift */; };
 		CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */; };
-		CC9BD6E8242D868000082E9B /* SigninButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E7242D868000082E9B /* SigninButtonCustom.swift */; };
+		CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */; };
 		CC9BD6EA242D8AE600082E9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E9242D8AE600082E9B /* Constants.swift */; };
-		CCEBC5F22450288D00F4F86A /* VaccineNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F12450288D00F4F86A /* VaccineNSObject.swift */; };
-		CCEBC5F62450510800F4F86A /* GroomingNSObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F52450510800F4F86A /* GroomingNSObject.swift */; };
+		CCEBC5F22450288D00F4F86A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F12450288D00F4F86A /* Vaccine.swift */; };
+		CCEBC5F62450510800F4F86A /* Groom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F52450510800F4F86A /* Groom.swift */; };
 		CCEBC5F824505B9700F4F86A /* AddVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F724505B9700F4F86A /* AddVaccineViewController.swift */; };
 		CCEBC5FA245063DD00F4F86A /* AddAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F9245063DD00F4F86A /* AddAppointmentViewController.swift */; };
 		CCEBC5FC245063E700F4F86A /* AddGroomingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5FB245063E700F4F86A /* AddGroomingViewController.swift */; };
@@ -63,28 +58,23 @@
 		CC0A234C23E3871C003F1F8E /* Pet Records.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Records.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0A234F23E3871C003F1F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC0A235123E3871C003F1F8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		CC0A235323E3871C003F1F8E /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
+		CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		CC0A235623E3871C003F1F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CC0A235923E3871C003F1F8E /* Pet_Records.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pet_Records.xcdatamodel; sourceTree = "<group>"; };
 		CC0A235B23E3871D003F1F8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC0A235E23E3871D003F1F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		CC0A236023E3871D003F1F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC0A236023E3871D003F1F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Pet Records/SupportingFiles/Info.plist"; sourceTree = SOURCE_ROOT; };
 		CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		CC43377F244E65C1007A9E04 /* PetNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetNSObject.swift; sourceTree = "<group>"; };
-		CC433781244E722B007A9E04 /* AppointmentNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppointmentNSObject.swift; sourceTree = "<group>"; };
+		CC43377F244E65C1007A9E04 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
+		CC433781244E722B007A9E04 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		CC433783244E7378007A9E04 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewController.swift; sourceTree = "<group>"; };
 		CC4443EE24716127006C22C8 /* SinglePetVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePetVaccineViewController.swift; sourceTree = "<group>"; };
 		CC4443F0247162DD006C22C8 /* SinglePetGroomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePetGroomTableViewController.swift; sourceTree = "<group>"; };
-		CC4531B0244B9F4D006722B3 /* ActiveUserMessagesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveUserMessagesTableViewController.swift; sourceTree = "<group>"; };
 		CC4531B2244BA178006722B3 /* ContactProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactProfileViewController.swift; sourceTree = "<group>"; };
-		CC4531B4244BAE21006722B3 /* MessageNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageNSObject.swift; sourceTree = "<group>"; };
-		CC4531B6244BC1DA006722B3 /* ChatInputContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInputContainerView.swift; sourceTree = "<group>"; };
-		CC4531BA244BD2B9006722B3 /* SendMessagesCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessagesCollectionViewCell.swift; sourceTree = "<group>"; };
-		CC45BA0324491FF9008903C7 /* SendMessagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendMessagesViewController.swift; sourceTree = "<group>"; };
 		CC45BA05244946CF008903C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		CC45C52D244F912600FC7679 /* PetDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetDetailsViewController.swift; sourceTree = "<group>"; };
 		CC45C531244FD05100FC7679 /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
-		CC45CAE624425CBE00DBE5C9 /* UserNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserNSObject.swift; sourceTree = "<group>"; };
+		CC45CAE624425CBE00DBE5C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CC45CAED24426E7200DBE5C9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		CC45CAF1244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePetAppointmentViewController.swift; sourceTree = "<group>"; };
 		CC45CAF3244276E100DBE5C9 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
@@ -97,10 +87,10 @@
 		CC83B04B249D35BD0051E90F /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		CC8666B7249C128C00DCD2B0 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
-		CC9BD6E7242D868000082E9B /* SigninButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninButtonCustom.swift; sourceTree = "<group>"; };
+		CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonCustom.swift; sourceTree = "<group>"; };
 		CC9BD6E9242D8AE600082E9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		CCEBC5F12450288D00F4F86A /* VaccineNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineNSObject.swift; sourceTree = "<group>"; };
-		CCEBC5F52450510800F4F86A /* GroomingNSObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomingNSObject.swift; sourceTree = "<group>"; };
+		CCEBC5F12450288D00F4F86A /* Vaccine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
+		CCEBC5F52450510800F4F86A /* Groom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groom.swift; sourceTree = "<group>"; };
 		CCEBC5F724505B9700F4F86A /* AddVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVaccineViewController.swift; sourceTree = "<group>"; };
 		CCEBC5F9245063DD00F4F86A /* AddAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddAppointmentViewController.swift; sourceTree = "<group>"; };
 		CCEBC5FB245063E700F4F86A /* AddGroomingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroomingViewController.swift; sourceTree = "<group>"; };
@@ -152,14 +142,12 @@
 		CC0A234E23E3871C003F1F8E /* Pet Records */ = {
 			isa = PBXGroup;
 			children = (
-				CC45CAE924426CCC00DBE5C9 /* Pet Controllers */,
-				CC45CAEB24426DB600DBE5C9 /* App Controllers */,
+				CC535D7825687C8800CDD229 /* Model */,
+				CCEBC61B245E38F600F4F86A /* Convenience */,
 				CCEBC61C245E395B00F4F86A /* Users */,
 				CCEBC61D245E397400F4F86A /* General */,
 				CC45C537244FD8DA00FC7679 /* Pets */,
-				CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */,
-				CC0A236023E3871D003F1F8E /* Info.plist */,
-				CC0A235823E3871C003F1F8E /* Pet_Records.xcdatamodeld */,
+				CCDA03442568787900171EB9 /* SupportingFiles */,
 			);
 			path = "Pet Records";
 			sourceTree = "<group>";
@@ -183,17 +171,19 @@
 			path = Pets;
 			sourceTree = "<group>";
 		};
-		CC45CAE924426CCC00DBE5C9 /* Pet Controllers */ = {
+		CC535D7825687C8800CDD229 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CC45CAE624425CBE00DBE5C9 /* UserNSObject.swift */,
-				CCEBC61A245E38B000F4F86A /* NSObjects */,
-				CCEBC61B245E38F600F4F86A /* Convenience Helpers */,
+				CC45CAE624425CBE00DBE5C9 /* User.swift */,
+				CC43377F244E65C1007A9E04 /* Pet.swift */,
+				CCEBC5F12450288D00F4F86A /* Vaccine.swift */,
+				CC433781244E722B007A9E04 /* Appointment.swift */,
+				CCEBC5F52450510800F4F86A /* Groom.swift */,
 			);
-			path = "Pet Controllers";
+			path = Model;
 			sourceTree = "<group>";
 		};
-		CC45CAEB24426DB600DBE5C9 /* App Controllers */ = {
+		CCDA03442568787900171EB9 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				CC0A235523E3871C003F1F8E /* Main.storyboard */,
@@ -201,23 +191,14 @@
 				CC0A235D23E3871D003F1F8E /* LaunchScreen.storyboard */,
 				CC0A234F23E3871C003F1F8E /* AppDelegate.swift */,
 				CC0A235123E3871C003F1F8E /* SceneDelegate.swift */,
+				CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */,
+				CC0A236023E3871D003F1F8E /* Info.plist */,
+				CC0A235823E3871C003F1F8E /* Pet_Records.xcdatamodeld */,
 			);
-			path = "App Controllers";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
-		CCEBC61A245E38B000F4F86A /* NSObjects */ = {
-			isa = PBXGroup;
-			children = (
-				CC43377F244E65C1007A9E04 /* PetNSObject.swift */,
-				CC4531B4244BAE21006722B3 /* MessageNSObject.swift */,
-				CCEBC5F12450288D00F4F86A /* VaccineNSObject.swift */,
-				CC433781244E722B007A9E04 /* AppointmentNSObject.swift */,
-				CCEBC5F52450510800F4F86A /* GroomingNSObject.swift */,
-			);
-			path = NSObjects;
-			sourceTree = "<group>";
-		};
-		CCEBC61B245E38F600F4F86A /* Convenience Helpers */ = {
+		CCEBC61B245E38F600F4F86A /* Convenience */ = {
 			isa = PBXGroup;
 			children = (
 				CC45C531244FD05100FC7679 /* HeaderLabel.swift */,
@@ -225,23 +206,19 @@
 				CCEBC61024567B6400F4F86A /* DateHelper.swift */,
 				CC6672DB248AC79600BB9E1F /* ConstraintController.swift */,
 				CC45BA05244946CF008903C7 /* Extensions.swift */,
-				CC9BD6E7242D868000082E9B /* SigninButtonCustom.swift */,
+				CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */,
 				CC6672D9248700A700BB9E1F /* FullBackgroundImage.swift */,
 				CC58577D23E3AF89000EF3B3 /* Utilities.swift */,
 			);
-			path = "Convenience Helpers";
+			path = Convenience;
 			sourceTree = "<group>";
 		};
 		CCEBC61C245E395B00F4F86A /* Users */ = {
 			isa = PBXGroup;
 			children = (
-				CC4531B6244BC1DA006722B3 /* ChatInputContainerView.swift */,
-				CC4531BA244BD2B9006722B3 /* SendMessagesCollectionViewCell.swift */,
 				CC45CAED24426E7200DBE5C9 /* UserProfileViewController.swift */,
 				CC4531B2244BA178006722B3 /* ContactProfileViewController.swift */,
 				CC45CAF3244276E100DBE5C9 /* ContactsTableViewController.swift */,
-				CC45BA0324491FF9008903C7 /* SendMessagesViewController.swift */,
-				CC4531B0244B9F4D006722B3 /* ActiveUserMessagesTableViewController.swift */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -254,7 +231,7 @@
 				CC83B04B249D35BD0051E90F /* SideMenuTableViewController.swift */,
 				CC8666B7249C128C00DCD2B0 /* HomeViewController.swift */,
 				CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */,
-				CC0A235323E3871C003F1F8E /* WelcomeScreenViewController.swift */,
+				CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */,
 			);
 			path = General;
 			sourceTree = "<group>";
@@ -296,7 +273,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1130;
-				LastUpgradeCheck = 1130;
+				LastUpgradeCheck = 1220;
 				ORGANIZATIONNAME = "Aaron Fulwider";
 				TargetAttributes = {
 					CC0A234B23E3871C003F1F8E = {
@@ -383,23 +360,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC4531BB244BD2B9006722B3 /* SendMessagesCollectionViewCell.swift in Sources */,
 				CC58577C23E3ACE1000EF3B3 /* SignUpViewController.swift in Sources */,
 				CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */,
-				CC9BD6E8242D868000082E9B /* SigninButtonCustom.swift in Sources */,
+				CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */,
 				CC4443F1247162DD006C22C8 /* SinglePetGroomTableViewController.swift in Sources */,
 				CCEBC5FC245063E700F4F86A /* AddGroomingViewController.swift in Sources */,
-				CC4531B1244B9F4D006722B3 /* ActiveUserMessagesTableViewController.swift in Sources */,
-				CC0A235423E3871C003F1F8E /* WelcomeScreenViewController.swift in Sources */,
+				CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */,
 				CC45CAF2244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift in Sources */,
-				CC433782244E722B007A9E04 /* AppointmentNSObject.swift in Sources */,
-				CC4531B5244BAE21006722B3 /* MessageNSObject.swift in Sources */,
+				CC433782244E722B007A9E04 /* Appointment.swift in Sources */,
 				CCEBC617245A45E500F4F86A /* AllPetAppointmentsTableViewController.swift in Sources */,
 				CC6672DA248700A700BB9E1F /* FullBackgroundImage.swift in Sources */,
 				CC45CAF4244276E100DBE5C9 /* ContactsTableViewController.swift in Sources */,
 				CC45BA06244946CF008903C7 /* Extensions.swift in Sources */,
-				CCEBC5F62450510800F4F86A /* GroomingNSObject.swift in Sources */,
-				CC4531B7244BC1DA006722B3 /* ChatInputContainerView.swift in Sources */,
+				CCEBC5F62450510800F4F86A /* Groom.swift in Sources */,
 				CCEBC5FA245063DD00F4F86A /* AddAppointmentViewController.swift in Sources */,
 				CC8666B8249C128C00DCD2B0 /* HomeViewController.swift in Sources */,
 				CCEBC615245A45D700F4F86A /* AllPetVaccinesTableViewController.swift in Sources */,
@@ -407,23 +380,22 @@
 				CC45C52E244F912600FC7679 /* PetDetailsViewController.swift in Sources */,
 				CC9BD6EA242D8AE600082E9B /* Constants.swift in Sources */,
 				CCEBC619245A45F100F4F86A /* AllPetGroomingsTableViewController.swift in Sources */,
-				CC45CAE724425CBE00DBE5C9 /* UserNSObject.swift in Sources */,
+				CC45CAE724425CBE00DBE5C9 /* User.swift in Sources */,
 				CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */,
 				CC45CAEE24426E7200DBE5C9 /* UserProfileViewController.swift in Sources */,
 				CC4443EF24716127006C22C8 /* SinglePetVaccineViewController.swift in Sources */,
 				CC4531B3244BA178006722B3 /* ContactProfileViewController.swift in Sources */,
-				CC433780244E65C1007A9E04 /* PetNSObject.swift in Sources */,
+				CC433780244E65C1007A9E04 /* Pet.swift in Sources */,
 				CC433784244E7378007A9E04 /* AddPetViewController.swift in Sources */,
 				CCEBC61124567B6400F4F86A /* DateHelper.swift in Sources */,
 				CC45C532244FD05100FC7679 /* HeaderLabel.swift in Sources */,
-				CC45BA0424491FF9008903C7 /* SendMessagesViewController.swift in Sources */,
 				CC0A235A23E3871C003F1F8E /* Pet_Records.xcdatamodeld in Sources */,
 				CCEBC5F824505B9700F4F86A /* AddVaccineViewController.swift in Sources */,
 				CC58577A23E3ACCE000EF3B3 /* LogInViewController.swift in Sources */,
 				CC46A67F243C006D000DBAD9 /* PetsTableViewController.swift in Sources */,
 				CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */,
 				CC6672DC248AC79600BB9E1F /* ConstraintController.swift in Sources */,
-				CCEBC5F22450288D00F4F86A /* VaccineNSObject.swift in Sources */,
+				CCEBC5F22450288D00F4F86A /* Vaccine.swift in Sources */,
 				CC83B04C249D35BD0051E90F /* SideMenuTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -476,6 +448,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -500,7 +473,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -536,6 +509,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -554,7 +528,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -571,7 +545,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD753K9SY2;
-				INFOPLIST_FILE = "Pet Records/Info.plist";
+				INFOPLIST_FILE = "Pet Records/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -590,7 +564,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD753K9SY2;
-				INFOPLIST_FILE = "Pet Records/Info.plist";
+				INFOPLIST_FILE = "Pet Records/SupportingFiles/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

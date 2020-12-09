@@ -10,14 +10,14 @@ import UIKit
 
 class ContactProfileViewController: UIViewController {
     
-    var user: UserNSObject? {
+    var user: User? {
         didSet {
             navigationController?.title = user?.firstName
         }
     }
     
     let titleLabel = UILabel()
-    let toChatButton = SigninButtonCustom()
+    let toChatButton = SignInButtonCustom()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,16 +41,12 @@ class ContactProfileViewController: UIViewController {
         toChatButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
         toChatButton.addTarget(self, action: #selector(toChat), for: .touchUpInside)
         toChatButton.setTitle("To Chat", for: .normal)
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     @objc func toChat(){
-        let vc = SendMessagesViewController(collectionViewLayout: UICollectionViewFlowLayout())
-        vc.user = user
-        _ = navigationController?.pushViewController(vc, animated: true)
+//        let vc = SendMessagesViewController(collectionViewLayout: UICollectionViewFlowLayout())
+//        vc.user = user
+//        _ = navigationController?.pushViewController(vc, animated: true)
     }
 }

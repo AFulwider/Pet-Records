@@ -8,32 +8,17 @@
 
 import UIKit
 import Firebase
-import FirebaseDatabase
 import SideMenu
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate {
-    let toContactsButton = SigninButtonCustom()
-    let toPetsTableButton = SigninButtonCustom()
-    let toAppointmentsButton = SigninButtonCustom()
-    let toVaccinesButton = SigninButtonCustom()
-    let toGroomingButton = SigninButtonCustom()
+    let toContactsButton = SignInButtonCustom()
+    let toPetsTableButton = SignInButtonCustom()
+    let toAppointmentsButton = SignInButtonCustom()
+    let toVaccinesButton = SignInButtonCustom()
+    let toGroomingButton = SignInButtonCustom()
     let backgroundImageView = UIImageView()
     
-    
-    
-    
-    
-    
-    
     var menu : SideMenuNavigationController?
-    
-    
-    
-    
-    
-    
-    
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         checkIfUserIsLoggedIn()
@@ -43,49 +28,13 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         super.viewDidLoad()
 //        self.navigationItem.title = "TITLE"
         
-        
-        
-        
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
         menu = SideMenuNavigationController(rootViewController: SideMenuTableViewController())
-        
-        
-        
-        
         menu?.leftSide = true
         menu?.setNavigationBarHidden(true, animated: false)
-        
         SideMenuManager.default.leftMenuNavigationController = menu
         SideMenuManager.default.addPanGestureToPresent(toView: self.view)
-        
-        
-        
-
-        
-        
-        
-        
-        
-        
-        
-
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     func setupUI(){
@@ -95,7 +44,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
             if(viewController is UINavigationController) {
                 viewController = (viewController as! UINavigationController).visibleViewController
             }
-            
             if(viewController is HomeScreenViewController) {
 //                print("viewcontroller : \(navigationController?.navigationItem.title)")
             }
@@ -160,7 +108,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         } catch let logoutError {
             print(logoutError)
         }
-        let vc = WelcomeScreenViewController()
+        let vc = WelcomeViewController()
         let navigationController = self.navigationController
         navigationController?.setViewControllers([vc], animated:false)
     }
@@ -205,9 +153,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         if Auth.auth().currentUser?.uid == nil{
             perform(#selector(signOutTapped), with: nil, afterDelay: 0)
         } else {
-            
-     
-            
             // slide out menu
 //            let menuButton = UIButton()
 //            menuButton.frame = CGRect(x: 100, y: 100, width: 53, height: 51)

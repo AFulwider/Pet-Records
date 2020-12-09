@@ -11,14 +11,18 @@ import Firebase
 
 class PetsTableViewController: UITableViewController {
     
-    var pets = [PetNSObject?]()
+    var pets = [Pet?]()
     let petCellId = "petCell"
     
     func fetchUserPets() {
         let uid = Auth.auth().currentUser?.uid
+        print("1")
         Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
+            print("2")
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-                let pet = PetNSObject(dictionary : dictionary)
+                print("3")
+                let pet = Pet(dictionary : dictionary)
+                print("4")
                 self.pets.append(pet)
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
@@ -38,10 +42,7 @@ class PetsTableViewController: UITableViewController {
         fetchUserPets()
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addPetTapped))
-    }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
+        view.backgroundColor = .white
     }
     
     @objc func addPetTapped(){
@@ -88,7 +89,7 @@ class PetsTableViewController: UITableViewController {
         } catch let logoutError {
             print(logoutError)
         }
-        let vc = WelcomeScreenViewController()
+        let vc = WelcomeViewController()
         let navigationController = self.navigationController
         navigationController?.setViewControllers([vc], animated:false)
     }

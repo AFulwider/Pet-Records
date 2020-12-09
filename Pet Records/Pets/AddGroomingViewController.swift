@@ -17,8 +17,8 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
     var activeTextField = UITextField()
     let helpLabel = UILabel()
     
-    let submitButton = SigninButtonCustom()
-    let cancelButton = SigninButtonCustom()
+    let submitButton = SignInButtonCustom()
+    let cancelButton = SignInButtonCustom()
     
     let petSelectButton = UIButton()
     let petListView = UIView()
@@ -31,8 +31,8 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
     
     let toolBar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
     
-    var petObjects = [PetNSObject?]()
-    var currentPet : PetNSObject?
+    var petObjects = [Pet?]()
+    var currentPet : Pet?
     
     let datePicker: UIDatePicker = {
         let picker = UIDatePicker()
@@ -54,7 +54,7 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
         let uid = Auth.auth().currentUser?.uid
         Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-                let pet = PetNSObject(dictionary : dictionary)
+                let pet = Pet(dictionary : dictionary)
                 self.petObjects.append(pet)
                 DispatchQueue.main.async(execute: {
                     self.petListTV.reloadData()

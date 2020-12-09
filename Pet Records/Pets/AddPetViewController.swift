@@ -15,8 +15,8 @@ class AddPetViewController: UIViewController {
     let breedTextField = UITextField()
     let dateOfBirthTextField = UITextField()
     let genderTextField = UITextField()
-    let submitButton = SigninButtonCustom()
-    let cancelButton = SigninButtonCustom()
+    let submitButton = SignInButtonCustom()
+    let cancelButton = SignInButtonCustom()
     let profileImageView = UIImageView()
     
     let dobDatePicker : UIDatePicker = {
@@ -45,12 +45,8 @@ class AddPetViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
     }
     
     func setupUI(){
