@@ -24,9 +24,11 @@ class WelcomeViewController: UIViewController {
         view.backgroundColor = .white
         if Auth.auth().currentUser != nil {
             let vc = HomeScreenViewController()
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.window?.rootViewController = UINavigationController(rootViewController: HomeScreenViewController())
-            _ = navigationController?.pushViewController(vc, animated: true)
+            DispatchQueue.main.async {
+                _ = self.navigationController?.pushViewController(vc, animated: false)
+                self.navigationController?.viewControllers = [vc]
+            }
+            
         } else {
             print("no user currently logged in")
         }

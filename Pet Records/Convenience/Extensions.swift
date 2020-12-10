@@ -106,4 +106,14 @@ extension UIViewController : UITextFieldDelegate {
     @objc func donePressed() {
         view.endEditing(true)
     }
+    
+}
+
+extension UIViewController {
+    func SetRootVC(_ vc : UIViewController,_ needsTransition : Bool) {
+        if needsTransition {
+            _ = navigationController?.pushViewController(vc, animated: false)
+            navigationController?.viewControllers = [vc]
+        }
+    }
 }

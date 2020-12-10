@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 
 class DateHelper {
-    
     // returns a string from date
     static func dateToString(_ format: String, _ date: Date) -> String {
         let dateFormatter = DateFormatter()

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7BAC3EE22582D45B00A3824A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3EE12582D45B00A3824A /* MenuViewController.swift */; };
 		CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A234F23E3871C003F1F8E /* AppDelegate.swift */; };
 		CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235123E3871C003F1F8E /* SceneDelegate.swift */; };
 		CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		417F959A40DBFA2F416F5D7E /* Pods-Pet Records.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.release.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.release.xcconfig"; sourceTree = "<group>"; };
 		6FECA4DCED89F36EFF406323 /* Pods_Pet_Records.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pet_Records.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7BAC3EE12582D45B00A3824A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9F6FDBE3327CF0CA322AAA1A /* Pods-Pet Records.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.debug.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.debug.xcconfig"; sourceTree = "<group>"; };
 		CC0A234C23E3871C003F1F8E /* Pet Records.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Records.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0A234F23E3871C003F1F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 			children = (
 				CC4700D2258195BC00DB596F /* Authenticate */,
 				CC45C537244FD8DA00FC7679 /* Pets */,
+				7BAC3EE12582D45B00A3824A /* MenuViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,6 +364,7 @@
 				CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */,
 				CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */,
 				CC4443F1247162DD006C22C8 /* SinglePetGroomTableViewController.swift in Sources */,
+				7BAC3EE22582D45B00A3824A /* MenuViewController.swift in Sources */,
 				CCEBC5FC245063E700F4F86A /* AddGroomingViewController.swift in Sources */,
 				CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */,
 				CC45CAF2244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift in Sources */,

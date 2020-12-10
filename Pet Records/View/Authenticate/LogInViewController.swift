@@ -30,6 +30,7 @@ class LogInViewController: UIViewController {
         self.navigationItem.setHidesBackButton(true, animated: true)
         view.backgroundColor = Colors.lightPurple
         viewLayout()
+        title = "LogInViewController"
     }
     
     func viewLayout(){
@@ -60,7 +61,7 @@ class LogInViewController: UIViewController {
         backgroundImageView.contentMode = .scaleAspectFit
         backgroundImageView.image = UIImage(named: "PawPrints")
         
-        vertStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -20).isActive = true
+        vertStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
         vertStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         vertStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         vertStackView.distribution = .fillEqually
@@ -87,7 +88,14 @@ class LogInViewController: UIViewController {
         errorLabel.alpha = 0
         
         emailTextField.delegate = self
+        emailTextField.backgroundColor = .white
+        emailTextField.layer.borderWidth = 1
+        emailTextField.layer.borderColor = UIColor.black.cgColor
+        
         passwordTextField.delegate = self
+        passwordTextField.backgroundColor = .white
+        passwordTextField.layer.borderWidth = 1
+        passwordTextField.layer.borderColor = UIColor.black.cgColor
     }
     
     @objc func logInTapped() {

@@ -50,6 +50,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
     var firstNameHeight : NSLayoutConstraint?
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "SignUpViewController"
         uiSetup()
         self.navigationItem.setHidesBackButton(true, animated: true)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)

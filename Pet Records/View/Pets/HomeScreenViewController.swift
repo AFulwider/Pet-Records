@@ -17,6 +17,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     let toGroomingButton = SignInButtonCustom()
     let backgroundImageView = UIImageView()
     
+    let menuButton = UIButton()
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 //        checkIfUserIsLoggedIn()
@@ -24,31 +26,41 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        for i in navigationController!.viewControllers {
+            print("i.title: \(i)")
+        }
         setupUI()
         view.backgroundColor = .white
+        title = "HomeScreenViewController"
     }
     
     func setupUI(){
-        if let window = UIApplication.shared.delegate?.window {
-            var viewController = window!.rootViewController
-            if(viewController is UINavigationController) {
-                viewController = (viewController as! UINavigationController).visibleViewController
-            }
-            if(viewController is HomeScreenViewController) {
-//                print("viewcontroller : \(navigationController?.navigationItem.title)")
-            }
-        }
+//        if let window = UIApplication.shared.delegate?.window {
+//            var viewController = window!.rootViewController
+//            if(viewController is UINavigationController) {
+//                viewController = (viewController as! UINavigationController).visibleViewController
+//            }
+//            if(viewController is HomeScreenViewController) {
+////                print("viewcontroller : \(navigationController?.navigationItem.title)")
+//            }
+//        }
         
         view.addSubview(backgroundImageView)
         view.addSubview(toPetsTableButton)
         view.addSubview(toAppointmentsButton)
         view.addSubview(toVaccinesButton)
         view.addSubview(toGroomingButton)
+        
+        view.addSubview(menuButton)
 
         toPetsTableButton.translatesAutoresizingMaskIntoConstraints = false
         toAppointmentsButton.translatesAutoresizingMaskIntoConstraints = false
         toVaccinesButton.translatesAutoresizingMaskIntoConstraints = false
         toGroomingButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        menuButton.translatesAutoresizingMaskIntoConstraints = false
         
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
@@ -81,6 +93,23 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         toGroomingButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         toGroomingButton.setTitle("Grooming", for: .normal)
         toGroomingButton.addTarget(self, action: #selector(groomingTableViewButtonTapped), for: .touchUpInside)
+        
+        menuButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -5).isActive = true
+        menuButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -5).isActive = true
+        menuButton.heightAnchor.constraint(equalToConstant: view.frame.height * 0.1).isActive = true
+        menuButton.widthAnchor.constraint(equalToConstant: view.frame.height * 0.1).isActive = true
+        
+        menuButton.layer.cornerRadius = (view.frame.height * 0.1) / 2
+        menuButton.layer.masksToBounds = true
+        menuButton.backgroundColor = .black
+        
+        menuButton.setTitle("Menu", for: .normal)
+        menuButton.addTarget(self, action: #selector(menuButtonTapped), for: [.touchUpInside, .touchDragExit])
+    }
+    
+    @objc func menuButtonTapped() {
+        let vc = MenuViewController()
+        _ = navigationController?.present(vc, animated: true)
     }
     
     // MARK: - LOGOUT
