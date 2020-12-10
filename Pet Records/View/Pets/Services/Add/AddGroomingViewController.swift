@@ -125,14 +125,12 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
         petSelectButton.setTitle("select pet", for: .normal)
         petSelectButton.addTarget(self, action: #selector(selectPetForApp), for: .touchUpInside)
         
-        Utilities.styleTextFields(textfield: dateTF, placeholder:"Groom Date", secureTextEntry:false)
         dateTF.bottomAnchor.constraint(equalTo: petSelectButton.topAnchor, constant: -20).isActive = true
         dateTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         dateTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         dateTF.inputAccessoryView = toolBar
         dateTF.inputView = datePicker
         
-        Utilities.styleTextFields(textfield: titleTF, placeholder:"Title", secureTextEntry:false)
         titleTF.bottomAnchor.constraint(equalTo: dateTF.topAnchor, constant: -20).isActive = true
         titleTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         titleTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true

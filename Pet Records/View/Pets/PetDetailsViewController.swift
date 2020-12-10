@@ -27,11 +27,7 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
     let petGroomVC = SinglePetGroomTableViewController()
     
     let scrollView = UIScrollView()
-    var scrollViewHeight : CGFloat?
-    
-    var vacViewHeight : NSLayoutConstraint?
-    var appViewHeight : NSLayoutConstraint?
-    var groomViewHeight : NSLayoutConstraint?
+    var scrollViewHeight : CGFloat = 230
     
     var pet : Pet?
     
@@ -40,18 +36,12 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         petVacVC.pet = pet
         petAppVC.pet = pet
         petGroomVC.pet = pet
-        vacViewHeight?.constant = 0
-        appViewHeight?.constant = 0
-        groomViewHeight?.constant = 0
-        scrollViewHeight = 230
         setupUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        animateTableViewHeights()
-        scrollViewHeight! += (vacViewHeight!.constant + appViewHeight!.constant + groomViewHeight!.constant)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: scrollViewHeight! + 195)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: scrollViewHeight + 195)
         view.backgroundColor = .white
     }
     
@@ -132,66 +122,42 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         scrollView.isScrollEnabled = true
-        scrollView.contentSize = CGSize(width: view.frame.width, height: scrollViewHeight!)
+        scrollView.contentSize = CGSize(width: view.frame.width, height: scrollViewHeight)
         
         //MARK: Vaccine TableView
         vacTVLabel.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         vacTVLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
         vacTVLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         vacTVLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        //        vacTVLabel.setGradientBackground(Colors.darkBrown, .clear, CGPoint(x: 0, y: 0.5), CGPoint(x: 1, y: 0.5))
         vacTVLabel.text = "Vaccines"
         
         petVacVC.view.topAnchor.constraint(equalTo: vacTVLabel.bottomAnchor, constant: 1).isActive = true
         petVacVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         petVacVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         petVacVC.view.isUserInteractionEnabled = false
-        vacViewHeight = NSLayoutConstraint(item: petVacVC.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0)
-        vacViewHeight!.isActive = true
-        
-        
-        
-        
         
         //MARK: Appointments TableView
         appTVLabel.topAnchor.constraint(equalTo: petVacVC.view.bottomAnchor).isActive = true
         appTVLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
         appTVLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         appTVLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        //        appTVLabel.setGradientBackground(Colors.darkBrown, .clear, CGPoint(x: 0, y: 0.5), CGPoint(x: 1, y: 0.5))
         appTVLabel.text = "Appointments"
         
         petAppVC.view.topAnchor.constraint(equalTo: appTVLabel.bottomAnchor, constant: 1).isActive = true
         petAppVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         petAppVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         petAppVC.view.isUserInteractionEnabled = false
-        appViewHeight = NSLayoutConstraint(item: petAppVC.view!, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0)
-        appViewHeight!.isActive = true
-
         
         //MARK: Grooming TableView
         groomTVLabel.topAnchor.constraint(equalTo: petAppVC.view.bottomAnchor).isActive = true
         groomTVLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
         groomTVLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         groomTVLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        //        groomTVLabel.setGradientBackground(Colors.darkBrown, .clear, CGPoint(x: 0, y: 0.5), CGPoint(x: 1, y: 0.5))
         groomTVLabel.text = "Grooming"
         
         petGroomVC.view.topAnchor.constraint(equalTo: groomTVLabel.bottomAnchor, constant: 1).isActive = true
         petGroomVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
         petGroomVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
         petGroomVC.view.isUserInteractionEnabled = false
-        groomViewHeight = NSLayoutConstraint(item: petGroomVC.view!, attribute: .height, relatedBy:
-            .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 0.0, constant: 0)
-        groomViewHeight!.isActive = true
-    }
-    
-    func animateTableViewHeights() {
-        vacViewHeight?.constant = CGFloat(petVacVC.vaccines.count * 40)
-        appViewHeight?.constant = CGFloat(petAppVC.appointments.count * 40)
-        groomViewHeight?.constant = CGFloat(petGroomVC.grooms.count * 40)
-        UIView.animate(withDuration: 2, delay: 0.0, options: .curveLinear, animations: {
-            self.view.layoutIfNeeded()
-        }, completion: nil)
     }
 }

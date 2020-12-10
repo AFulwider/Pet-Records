@@ -85,9 +85,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
         
         // Check if password is secure
         let cleanedPassword = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        if !Utilities.isPasswordValid(cleanedPassword) {
-            return "Please make sure your password is at least 8 characters, contains a special character and a number."
-        }
         return nil
     }
     
@@ -215,7 +212,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
         errorLabel.trailingAnchor.constraint(equalTo: mainStackView.trailingAnchor).isActive = true
         errorLabel.numberOfLines = 0
         errorLabel.alpha = 0
-        Utilities.errorTextFields(errorLabel)
         
         profileImageView.image = UIImage(named: "blank_profile_image")
         profileImageView.bottomAnchor.constraint(equalTo: mainStackView.topAnchor, constant: -20).isActive = true
@@ -234,10 +230,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
         submitButton.backgroundColor = Colors.mediumGreen
         submitButton.setTitle("Submit", for: .normal)
         
-        Utilities.styleTextFields(textfield: firstNameTextField, placeholder:"First Name", secureTextEntry:false)
-        Utilities.styleTextFields(textfield: lastNameTextField, placeholder:"Last Name", secureTextEntry:false)
-        Utilities.styleTextFields(textfield: emailTextField, placeholder:"email", secureTextEntry:false)
-        Utilities.styleTextFields(textfield: passwordTextField, placeholder:"password", secureTextEntry:true)
     }
     
     

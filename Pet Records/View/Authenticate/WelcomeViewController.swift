@@ -6,21 +6,22 @@
 //  Copyright © 2020 Aaron Fulwider. All rights reserved.
 //
 
+/*
+ Have image slowly fade in after screen loads
+ */
 import UIKit
 import Firebase
 
 class WelcomeViewController: UIViewController {
     
+    let stackView = UIStackView()
     let signUpButton = SignInButtonCustom()
     let logInButton = SignInButtonCustom()
-    let tempButton = SignInButtonCustom()
     let backgroundImageView = UIImageView()
-    var count = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        // if user is already logged in, go to home screen and that will then be the welcome screen each time user opens the app, until they log out.
         if Auth.auth().currentUser != nil {
             let vc = HomeScreenViewController()
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -35,14 +36,15 @@ class WelcomeViewController: UIViewController {
     
     func viewLayout(){
         view.addSubview(backgroundImageView)
-        view.addSubview(tempButton)
-        view.addSubview(signUpButton)
-        view.addSubview(logInButton)
-        tempButton.translatesAutoresizingMaskIntoConstraints = false
-        signUpButton.translatesAutoresizingMaskIntoConstraints  = false
-        logInButton.translatesAutoresizingMaskIntoConstraints   = false
+        view.addSubview(stackView)
+        stackView.addArrangedSubview(signUpButton)
+        stackView.addArrangedSubview(logInButton)
         
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        signUpButton.translatesAutoresizingMaskIntoConstraints = false
+        logInButton.translatesAutoresizingMaskIntoConstraints = false
+        
         backgroundImageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         backgroundImageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         backgroundImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -50,36 +52,18 @@ class WelcomeViewController: UIViewController {
         backgroundImageView.contentMode = .scaleAspectFit
         backgroundImageView.image = UIImage(named: "PawPrints")
         
-        // bottom button
-        signUpButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -100).isActive = true
-        signUpButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        signUpButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        stackView.axis = .vertical
+        stackView.distribution = .fillProportionally
+        stackView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -20).isActive = true
+        stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 20).isActive = true
+        stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -20).isActive = true
+        stackView.spacing = 4
+        
         signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
         signUpButton.setTitle("Sign up", for: .normal)
         
-        // top button
-        logInButton.bottomAnchor.constraint(equalTo: signUpButton.topAnchor, constant: -20).isActive = true
-        logInButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        logInButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         logInButton.addTarget(self, action: #selector(logInButtonTapped), for: .touchUpInside)
         logInButton.setTitle("Log in", for: .normal)
-        
-        // temp button
-        tempButton.bottomAnchor.constraint(equalTo: logInButton.topAnchor, constant: -20).isActive = true
-        tempButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        tempButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-        tempButton.addTarget(self, action: #selector(tempButtonTapped), for: .touchUpInside)
-        tempButton.setTitle("Temp Button", for: .normal)
-    }
-    
-    @objc func tempButtonTapped(_ sender: Any) {
-        if !count  {
-        view.backgroundColor = Colors.darkPurple
-            count = true
-        } else {
-            view.backgroundColor = Colors.lightBlue
-            count = false
-        }
     }
     
     @objc func signUpButtonTapped(_ sender: Any){
@@ -89,7 +73,6 @@ class WelcomeViewController: UIViewController {
     
     @objc func logInButtonTapped(_ sender: Any){
         let vc = LogInViewController()
-        _ = navigationController?.present(vc, animated: true)
-//        _ = navigationController?.pushViewController(vc, animated: true)
+        _ = navigationController?.pushViewController(vc, animated: true)
     }
 }

@@ -83,26 +83,22 @@ class AddPetViewController: UIViewController {
         profileImageView.image = UIImage(named: "blank_profile_image")
         profileImageView.contentMode = .scaleAspectFit
         
-        Utilities.styleTextFields(textfield: nameTextField, placeholder: "Name", secureTextEntry: false)
         nameTextField.topAnchor.constraint(equalTo: profileImageView.bottomAnchor, constant: 10).isActive = true
         nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         nameTextField.textAlignment = .center
         
-        Utilities.styleTextFields(textfield: breedTextField, placeholder: "Breed", secureTextEntry: false)
         breedTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 10).isActive = true
         breedTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         breedTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         breedTextField.textAlignment = .center
         
         // TODO: CHANGE TO TOGGLE
-        Utilities.styleTextFields(textfield: genderTextField, placeholder: "Gender", secureTextEntry: false)
         genderTextField.topAnchor.constraint(equalTo: breedTextField.bottomAnchor, constant: 10).isActive = true
         genderTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         genderTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         genderTextField.textAlignment = .center
         
-        Utilities.styleTextFields(textfield: dateOfBirthTextField, placeholder: "DoB", secureTextEntry: false)
         dateOfBirthTextField.topAnchor.constraint(equalTo: breedTextField.bottomAnchor, constant: 10).isActive = true
         dateOfBirthTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         dateOfBirthTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true

@@ -8,37 +8,27 @@
 
 import UIKit
 import Firebase
-import SideMenu
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate {
-    let toContactsButton = SignInButtonCustom()
+
     let toPetsTableButton = SignInButtonCustom()
     let toAppointmentsButton = SignInButtonCustom()
     let toVaccinesButton = SignInButtonCustom()
     let toGroomingButton = SignInButtonCustom()
     let backgroundImageView = UIImageView()
     
-    var menu : SideMenuNavigationController?
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        checkIfUserIsLoggedIn()
+//        checkIfUserIsLoggedIn()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.navigationItem.title = "TITLE"
-        
-        menu = SideMenuNavigationController(rootViewController: SideMenuTableViewController())
-        menu?.leftSide = true
-        menu?.setNavigationBarHidden(true, animated: false)
-        SideMenuManager.default.leftMenuNavigationController = menu
-        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
         setupUI()
         view.backgroundColor = .white
     }
     
     func setupUI(){
-        
         if let window = UIApplication.shared.delegate?.window {
             var viewController = window!.rootViewController
             if(viewController is UINavigationController) {
@@ -50,12 +40,11 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         }
         
         view.addSubview(backgroundImageView)
-        view.addSubview(toContactsButton)
         view.addSubview(toPetsTableButton)
         view.addSubview(toAppointmentsButton)
         view.addSubview(toVaccinesButton)
         view.addSubview(toGroomingButton)
-        toContactsButton.translatesAutoresizingMaskIntoConstraints = false
+
         toPetsTableButton.translatesAutoresizingMaskIntoConstraints = false
         toAppointmentsButton.translatesAutoresizingMaskIntoConstraints = false
         toVaccinesButton.translatesAutoresizingMaskIntoConstraints = false
@@ -69,14 +58,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         backgroundImageView.contentMode = .scaleAspectFit
         backgroundImageView.image = UIImage(named: "PawPrints")
         
-        toContactsButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        toContactsButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
-        toContactsButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
-        toContactsButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        toContactsButton.setTitle("Connections", for: .normal)
-        toContactsButton.addTarget(self, action: #selector(toContactsVCTapped), for: .touchUpInside)
-        
-        toPetsTableButton.topAnchor.constraint(equalTo: toContactsButton.bottomAnchor, constant: 20).isActive = true
+        toPetsTableButton.topAnchor.constraint(equalTo: backgroundImageView.bottomAnchor, constant: 20).isActive = true
         toPetsTableButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         toPetsTableButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         toPetsTableButton.setTitle("Pets", for: .normal)
@@ -119,12 +101,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         _ = navigationController?.pushViewController(vc, animated: true)
     }
     
-    // MARK: - TO CONTACTS VC
-    @objc func toContactsVCTapped(){
-        let vc = ContactsTableViewController()
-        _ = navigationController?.pushViewController(vc, animated: true)
-    }
-    
     // MARK: - TO PETS TABLEVIEW
     @objc func toPetsTableVCTapped(){
         let vc = PetsTableViewController()
@@ -147,29 +123,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     @objc func groomingTableViewButtonTapped(){
         let vc = AllPetGroomingsTableViewController()
         _ = navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    func checkIfUserIsLoggedIn(){
-        if Auth.auth().currentUser?.uid == nil{
-            perform(#selector(signOutTapped), with: nil, afterDelay: 0)
-        } else {
-            // slide out menu
-//            let menuButton = UIButton()
-//            menuButton.frame = CGRect(x: 100, y: 100, width: 53, height: 51)
-//            menuButton.setImage(UIImage(named: "menu-hamburger"), for: .normal)
-//            menuButton.addTarget(self, action: #selector(didTapMenu), for: .touchUpInside)
-            
-//            navigationItem.leftBarButtonItem = UIBarButtonItem(customView: menuButton)
-            
-//            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Profile", style: .plain, target: self, action: #selector(toProfileVCTapped))
-//            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sign Out", style: .plain, target: self, action: #selector(signOutTapped))
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "SOM", style: .plain, target: self, action: #selector(didTapMenu))
-//            fetchUserAndSetupNavBarTitle()
-        }
-    }
-    
-    @objc func didTapMenu() {
-        present(menu!, animated: true)
     }
     
     // Sets the title to the name of currently logged in user, after first making sure someone is logged in.

@@ -1,96 +1,47 @@
 //
-//  HomeViewController.swift
+//  HomeScreenTableViewController.swift
 //  Pet Records
 //
-//  Created by Aaron Fulwider on 6/18/20.
+//  Created by Aaron Fulwider on 4/6/20.
 //  Copyright © 2020 Aaron Fulwider. All rights reserved.
 //
 
 import UIKit
 import Firebase
-import SideMenu
 
-class HomeViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
-    
+class PetsTableViewController: UITableViewController {
     var pets = [Pet?]()
-    let cellID = "cell"
+    let petCellId = "petCell"
     
-    let petCollectionView = UICollectionView()
-    
-    var menu : SideMenuNavigationController?
-    
-    func fetchPets() {
+    func fetchUserPets() {
         let uid = Auth.auth().currentUser?.uid
+        print("1")
         Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
+            print("2")
             if let dictionary = snapshot.value as? [String: AnyObject]   {
+                print("3")
                 let pet = Pet(dictionary : dictionary)
+                print("4")
                 self.pets.append(pet)
                 DispatchQueue.main.async(execute: {
-                    self.petCollectionView.reloadData()
+                    self.tableView.reloadData()
                 })
             }
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        menu = SideMenuNavigationController(rootViewController: UIViewController())
-        menu?.leftSide = true
-        
-        SideMenuManager.default.addPanGestureToPresent(toView: self.view)
-        
         navigationItem.title = "Your Pets"
-        petCollectionView.register(PetsTableViewCell.self, forCellWithReuseIdentifier: cellID)
-        fetchPets()
-//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(didTapMenu))
+        tableView.register(PetsTableViewCell.self, forCellReuseIdentifier: petCellId)
+        fetchUserPets()
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addPetTapped))
-        setupUI()
         view.backgroundColor = .white
-    }
-    
-    @objc func didTapMenu() {
-        present(menu!, animated: true)
-    }
-    
-    func setupUI() {
-        view.addSubview(petCollectionView)
-        petCollectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        petCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 50).isActive = true
-        petCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        petCollectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
-        petCollectionView.allowsSelection = true
-        petCollectionView.delegate = self
-        
-        
-    }
-    
-    
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
-    }
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        pets.count
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as? MainPetTableViewCell else {
-            return UICollectionViewCell()
-        }
-        cell.nameLabel.text = pets[indexPath.row]?.name
-        if let petImageURL = pets[indexPath.row]?.profileImageURL {
-            cell.petImage.loadImageUsingCacheWithUrlString(petImageURL)
-        }
-        return cell
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let vc = PetDetailsViewController()
-        let pet = self.pets[indexPath.row]
-        vc.pet = pet
-        _ = navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func addPetTapped(){
@@ -100,6 +51,35 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     
     @objc func backButton(){
         navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Table view data source
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return pets.count
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: petCellId, for: indexPath) as! PetsTableViewCell
+        cell.nameLabel.text = pets[indexPath.row]?.name
+        if let petImageURL = pets[indexPath.row]?.profileImageURL {
+            cell.petImage.loadImageUsingCacheWithUrlString(petImageURL)
+        }
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let vc = PetDetailsViewController()
+        let pet = self.pets[indexPath.row]
+        vc.pet = pet
+        _ = navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func signOutTapped(){
@@ -114,19 +94,23 @@ class HomeViewController: UIViewController, UICollectionViewDataSource, UICollec
     }
 }
 
-class MainPetTableViewCell : UICollectionViewCell {
+class PetsTableViewCell : UITableViewCell {
     
-    let petImage        = UIImageView()
-    let nameLabel       = UILabel()
-    let topSeparator    = UIView()
+    let petImage    = UIImageView()
+    let nameLabel   = UILabel()
+    let topSeparator = UIView()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
         uiSetup()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
     
     func uiSetup(){

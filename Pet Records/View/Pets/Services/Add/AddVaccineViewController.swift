@@ -168,21 +168,18 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
         petSelectButton.setTitle("select pet", for: .normal)
         petSelectButton.addTarget(self, action: #selector(selectPetForApp), for: .touchUpInside)
         
-        Utilities.styleTextFields(textfield: endTimeTF, placeholder:"End Date", secureTextEntry:false)
         endTimeTF.bottomAnchor.constraint(equalTo: petSelectButton.topAnchor, constant: -20).isActive = true
         endTimeTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         endTimeTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         endTimeTF.inputView = endDatePicker
         endTimeTF.inputAccessoryView = toolBar
         
-        Utilities.styleTextFields(textfield: startTimeTF, placeholder:"Start Date", secureTextEntry:false)
         startTimeTF.bottomAnchor.constraint(equalTo: endTimeTF.topAnchor, constant: -10).isActive = true
         startTimeTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         startTimeTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         startTimeTF.inputView = startDatePicker
         startTimeTF.inputAccessoryView = toolBar
         
-        Utilities.styleTextFields(textfield: titleTF, placeholder:"Vaccine", secureTextEntry:false)
         titleTF.bottomAnchor.constraint(equalTo: startTimeTF.topAnchor, constant: -10).isActive = true
         titleTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         titleTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true

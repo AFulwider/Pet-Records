@@ -141,7 +141,6 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         toolBar.isTranslucent = true
         toolBar.sizeToFit()
         
-        Utilities.styleTextFields(textfield: locationTF, placeholder:"Location", secureTextEntry:false)
         locationTF.bottomAnchor.constraint(equalTo: submitButton.topAnchor, constant: -20).isActive = true
         locationTF.leadingAnchor.constraint(equalTo: submitButton.leadingAnchor).isActive = true
         locationTF.trailingAnchor.constraint(equalTo: submitButton.trailingAnchor).isActive = true
@@ -155,7 +154,6 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         petSelectButton.setTitle("select pet", for: .normal)
         petSelectButton.addTarget(self, action: #selector(selectPetForApp), for: .touchUpInside)
         
-        Utilities.styleTextFields(textfield: timeTF, placeholder:"Time", secureTextEntry:false)
         timeTF.bottomAnchor.constraint(equalTo: petSelectButton.topAnchor, constant: -10).isActive = true
         timeTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         timeTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
@@ -163,7 +161,6 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         timeTF.delegate = self
         timeTF.inputAccessoryView = toolBar
         
-        Utilities.styleTextFields(textfield: titleTF, placeholder:"Title", secureTextEntry:false)
         titleTF.bottomAnchor.constraint(equalTo: timeTF.topAnchor, constant: -10).isActive = true
         titleTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         titleTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true

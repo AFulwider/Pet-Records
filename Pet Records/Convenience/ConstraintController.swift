@@ -12,16 +12,11 @@ import UIKit
 class ConstraintController {
     
     static func setLayoutConstraints(frame: CGRect, topConstraint: NSLayoutConstraint, bottomConstraint: NSLayoutConstraint, leftConstraint: NSLayoutConstraint, rightConstraint: NSLayoutConstraint, view : UIView) -> CGRect {
-        
         var rekt : CGRect?
         rekt = CGRect(x: 0, y: 0, width: 0, height: 0)
-        
-        
 //        view.topAnchor.constraint(equalTo: topConstraint)
-        
         _ = view.safeAreaInsets.top
         _ = view.safeAreaInsets.bottom
-        
         return rekt!
     }
 }
