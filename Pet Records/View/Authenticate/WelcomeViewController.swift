@@ -28,7 +28,6 @@ class WelcomeViewController: UIViewController {
                 _ = self.navigationController?.pushViewController(vc, animated: false)
                 self.navigationController?.viewControllers = [vc]
             }
-            
         } else {
             print("no user currently logged in")
         }

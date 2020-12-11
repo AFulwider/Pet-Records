@@ -19,34 +19,30 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     
     let menuButton = UIButton()
     
+    let petCollectionView = UICollectionView()
+    
+    let cellID = "cellID"
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        petCollectionView.delegate = self
+        petCollectionView.dataSource = self
+        
+        petCollectionView.register(petCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
 //        checkIfUserIsLoggedIn()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         for i in navigationController!.viewControllers {
             print("i.title: \(i)")
         }
         setupUI()
         view.backgroundColor = .white
-        title = "HomeScreenViewController"
+        title = "Home"
     }
     
     func setupUI(){
-//        if let window = UIApplication.shared.delegate?.window {
-//            var viewController = window!.rootViewController
-//            if(viewController is UINavigationController) {
-//                viewController = (viewController as! UINavigationController).visibleViewController
-//            }
-//            if(viewController is HomeScreenViewController) {
-////                print("viewcontroller : \(navigationController?.navigationItem.title)")
-//            }
-//        }
-        
         view.addSubview(backgroundImageView)
         view.addSubview(toPetsTableButton)
         view.addSubview(toAppointmentsButton)
@@ -109,7 +105,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     
     @objc func menuButtonTapped() {
         let vc = MenuViewController()
-        _ = navigationController?.present(vc, animated: true)
+        _ = navigationController?.pushViewController(vc, animated: true)
     }
     
     // MARK: - LOGOUT
@@ -164,5 +160,40 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
                 self.navigationItem.title = dictionary["firstName"] as? String
             }
         }, withCancel: nil)
+    }
+}
+
+extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func collectionViewUI () {
+        
+    }
+    
+    
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = petCollectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! petCollectionViewCell
+        return cell
+    }
+    
+    
+}
+
+class petCollectionViewCell : UICollectionViewCell {
+    let petImageView = UIImageView()
+    override init(frame: CGRect) {
+        super.init(frame: .zero)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func cellUI() {
+        
     }
 }
