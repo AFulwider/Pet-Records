@@ -23,7 +23,8 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         if Auth.auth().currentUser != nil {
-            let vc = HomeScreenViewController()
+//            let vc = HomeScreenViewController()
+            let vc = TabBarViewController()
             DispatchQueue.main.async {
                 _ = self.navigationController?.pushViewController(vc, animated: false)
                 self.navigationController?.viewControllers = [vc]

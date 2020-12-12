@@ -11,7 +11,6 @@
 		CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A234F23E3871C003F1F8E /* AppDelegate.swift */; };
 		CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235123E3871C003F1F8E /* SceneDelegate.swift */; };
 		CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */; };
-		CC0A235A23E3871C003F1F8E /* Pet_Records.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235823E3871C003F1F8E /* Pet_Records.xcdatamodeld */; };
 		CC0A235C23E3871D003F1F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC0A235B23E3871D003F1F8E /* Assets.xcassets */; };
 		CC0A235F23E3871D003F1F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC0A235D23E3871D003F1F8E /* LaunchScreen.storyboard */; };
 		CC0A236723E387F2003F1F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */; };
@@ -31,6 +30,7 @@
 		CC58577C23E3ACE1000EF3B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */; };
 		CC6672DA248700A700BB9E1F /* FullBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6672D9248700A700BB9E1F /* FullBackgroundImage.swift */; };
 		CC6672DC248AC79600BB9E1F /* ConstraintController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6672DB248AC79600BB9E1F /* ConstraintController.swift */; };
+		CC77854C25845BF100AAB503 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC77854B25845BF100AAB503 /* TabBarViewController.swift */; };
 		CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */; };
 		CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */; };
 		CC9BD6EA242D8AE600082E9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E9242D8AE600082E9B /* Constants.swift */; };
@@ -55,7 +55,6 @@
 		CC0A234F23E3871C003F1F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC0A235123E3871C003F1F8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		CC0A235923E3871C003F1F8E /* Pet_Records.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Pet_Records.xcdatamodel; sourceTree = "<group>"; };
 		CC0A235B23E3871D003F1F8E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CC0A235E23E3871D003F1F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC0A236023E3871D003F1F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Pet Records/SupportingFiles/Info.plist"; sourceTree = SOURCE_ROOT; };
@@ -76,6 +75,7 @@
 		CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CC6672D9248700A700BB9E1F /* FullBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullBackgroundImage.swift; sourceTree = "<group>"; };
 		CC6672DB248AC79600BB9E1F /* ConstraintController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintController.swift; sourceTree = "<group>"; };
+		CC77854B25845BF100AAB503 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Pet Records/View/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonCustom.swift; sourceTree = "<group>"; };
 		CC9BD6E9242D8AE600082E9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -167,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */,
+				CC77854B25845BF100AAB503 /* TabBarViewController.swift */,
 				CC58577923E3ACCE000EF3B3 /* LogInViewController.swift */,
 				CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */,
 			);
@@ -218,7 +219,6 @@
 				CC0A235123E3871C003F1F8E /* SceneDelegate.swift */,
 				CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */,
 				CC0A236023E3871D003F1F8E /* Info.plist */,
-				CC0A235823E3871C003F1F8E /* Pet_Records.xcdatamodeld */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -373,6 +373,7 @@
 				CC6672DA248700A700BB9E1F /* FullBackgroundImage.swift in Sources */,
 				CC45BA06244946CF008903C7 /* Extensions.swift in Sources */,
 				CCEBC5F62450510800F4F86A /* Groom.swift in Sources */,
+				CC77854C25845BF100AAB503 /* TabBarViewController.swift in Sources */,
 				CCEBC5FA245063DD00F4F86A /* AddAppointmentViewController.swift in Sources */,
 				CCEBC615245A45D700F4F86A /* AllPetVaccinesTableViewController.swift in Sources */,
 				CC45C52E244F912600FC7679 /* PetDetailsViewController.swift in Sources */,
@@ -386,7 +387,6 @@
 				CC433784244E7378007A9E04 /* AddPetViewController.swift in Sources */,
 				CCEBC61124567B6400F4F86A /* DateHelper.swift in Sources */,
 				CC45C532244FD05100FC7679 /* HeaderLabel.swift in Sources */,
-				CC0A235A23E3871C003F1F8E /* Pet_Records.xcdatamodeld in Sources */,
 				CCEBC5F824505B9700F4F86A /* AddVaccineViewController.swift in Sources */,
 				CC58577A23E3ACCE000EF3B3 /* LogInViewController.swift in Sources */,
 				CC46A67F243C006D000DBAD9 /* PetsTableViewController.swift in Sources */,
@@ -586,19 +586,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		CC0A235823E3871C003F1F8E /* Pet_Records.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				CC0A235923E3871C003F1F8E /* Pet_Records.xcdatamodel */,
-			);
-			currentVersion = CC0A235923E3871C003F1F8E /* Pet_Records.xcdatamodel */;
-			path = Pet_Records.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = CC0A234423E3871C003F1F8E /* Project object */;
 }

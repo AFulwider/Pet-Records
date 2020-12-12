@@ -43,7 +43,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         view.backgroundColor = .white
-//        view.setGradientBackground(Colors.lightBlue.cgColor, Colors.mediumBlue.cgColor, CGPoint(x: 0.0, y: 0.0), CGPoint(x: 1.0, y: 1.0))
     }
     
     var vacViewHeight : NSLayoutConstraint?
@@ -139,7 +138,7 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
                 print(err!)
                 return
             }
-            self.homeScreenController.fetchUserAndSetupNavBarTitle()
+//            self.homeScreenController.fetchUserAndSetupNavBarTitle()
         })
     }
     
@@ -228,7 +227,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
         submitButton.addTarget(self, action: #selector(signUpTapped), for: .touchUpInside)
         submitButton.backgroundColor = Colors.mediumGreen
         submitButton.setTitle("Submit", for: .normal)
-        
     }
     
     

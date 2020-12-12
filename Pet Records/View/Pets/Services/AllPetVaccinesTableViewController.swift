@@ -65,7 +65,6 @@ class AllPetVaccinesTableViewController: UITableViewController, UIGestureRecogni
         cell.titleLabel.textColor = .black
         cell.startDateLabel.textColor = Colors.darkPurple
         cell.titleLabel.text = vaccines[indexPath.row]?.title
-        //            cell.setGradientBackground(Colors.lightPurple, .clear, CGPoint(x: 0, y: 0.5), CGPoint(x: 1, y: 0.5))
         cell.startDateLabel.text = vaccines[indexPath.row]?.startDate
         cell.endDateLabel.text = vaccines[indexPath.row]?.endDate
         return cell
