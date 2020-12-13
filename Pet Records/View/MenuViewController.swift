@@ -74,6 +74,5 @@ class MenuViewController: UIView {
         emergencyButton.widthAnchor.constraint(equalToConstant: 200).isActive = true
         emergencyButton.backgroundColor = .systemPurple
         emergencyButton.layer.cornerRadius = 8
-        
     }
 }

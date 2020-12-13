@@ -10,10 +10,12 @@ import UIKit
 import Firebase
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate {
-
+    
     let backgroundImageView = UIImageView()
     let menuButton = UIButton()
     let cellID = "cellID"
+    
+    let bottomLabel = UITextView()
     
     enum petPics:String {
         case pp0,pp1,pp2,pp3,pp4,pp5,pp6,pp7,pp8,pp9
@@ -27,20 +29,20 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        for i in navigationController!.viewControllers {
-            print("i.title: \(i)")
-        }
-        
-        setupUI()
+//        for i in navigationController!.viewControllers {
+//            print("i.title: \(i)")
+//        }
+        topUI()
         collectionViewUI()
+        bottomUI()
         view.backgroundColor = .white
         title = "Home"
     }
     
-    func setupUI(){
+    func topUI(){
         view.addSubview(backgroundImageView)
         view.addSubview(menuButton)
-
+        
         menuButton.translatesAutoresizingMaskIntoConstraints = false
         backgroundImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -60,6 +62,29 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         menuButton.backgroundColor = .black
         menuButton.setTitle("Menu", for: .normal)
         menuButton.addTarget(self, action: #selector(menuButtonTapped), for: [.touchUpInside, .touchDragExit])
+        
+    }
+    
+    func bottomUI() {
+        view.addSubview(bottomLabel)
+        bottomLabel.translatesAutoresizingMaskIntoConstraints = false
+        bottomLabel.topAnchor.constraint(equalTo: petCollectionView.bottomAnchor).isActive = true
+        bottomLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        bottomLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        bottomLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        
+        bottomLabel.textColor = .systemPurple
+        bottomLabel.isUserInteractionEnabled = false
+        
+        bottomLabel.text =
+            "Dogs: 5\n" +
+            "Cats: 1\n" +
+            "Other: 88\n" +
+            "Appointments Pending: 1\n" +
+            "Vaccines Due: 0\n" +
+            "Pets need grooming: 9"
+        
+        bottomLabel.backgroundColor = UIColor(red: 0.1, green: 0.4, blue: 0.9, alpha: 0.5)
     }
     
     @objc func menuButtonTapped() {
@@ -115,34 +140,35 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! petCollectionViewCell
         
-        
-        let rand = Int.random(in: 1...10)
-        
-        switch rand {
-        case 0:
-            cell.petImageView.image = UIImage(named: "pp0")
-        case 1:
-            cell.petImageView.image = UIImage(named: "pp1")
-        case 2:
-            cell.petImageView.image = UIImage(named: "pp2")
-        case 3:
-            cell.petImageView.image = UIImage(named: "pp3")
-        case 4:
-            cell.petImageView.image = UIImage(named: "pp4")
-        case 5:
-            cell.petImageView.image = UIImage(named: "pp5")
-        case 6:
-            cell.petImageView.image = UIImage(named: "pp6")
-        case 7:
-            cell.petImageView.image = UIImage(named: "pp7")
-        case 8:
-            cell.petImageView.image = UIImage(named: "pp8")
-        case 9:
-            cell.petImageView.image = UIImage(named: "pp9")
-        default:
-            cell.petImageView.image = UIImage(named: "pp0")
+        if indexPath.row < 49 {
+            let rand = Int.random(in: 1...10)
+            switch rand {
+            case 0:
+                cell.petImageView.image = UIImage(named: "pp0")
+            case 1:
+                cell.petImageView.image = UIImage(named: "pp1")
+            case 2:
+                cell.petImageView.image = UIImage(named: "pp2")
+            case 3:
+                cell.petImageView.image = UIImage(named: "pp3")
+            case 4:
+                cell.petImageView.image = UIImage(named: "pp4")
+            case 5:
+                cell.petImageView.image = UIImage(named: "pp5")
+            case 6:
+                cell.petImageView.image = UIImage(named: "pp6")
+            case 7:
+                cell.petImageView.image = UIImage(named: "pp7")
+            case 8:
+                cell.petImageView.image = UIImage(named: "pp8")
+            case 9:
+                cell.petImageView.image = UIImage(named: "pp9")
+            default:
+                cell.petImageView.image = UIImage(named: "pp0")
+            }
+        } else {
+            cell.petImageView.image = .add
         }
-        
         return cell
     }
 }
