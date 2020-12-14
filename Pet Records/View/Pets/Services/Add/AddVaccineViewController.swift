@@ -274,11 +274,11 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func dateValueChanged(_ sender: UIDatePicker){
         if sender == startDatePicker {
-            let string = DateHelper.dateToString("MMMM dd, yyyy", sender.date)
+            let string = DateHelper.shared.dateToString("MMMM dd, yyyy", sender.date)
             startTimeTF.text = string
         }
         if sender == endDatePicker{
-            let string = DateHelper.dateToString("MMMM dd, yyyy", sender.date)
+            let string = DateHelper.shared.dateToString("MMMM dd, yyyy", sender.date)
             endTimeTF.text = string
         }
     }
@@ -289,11 +289,11 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     
     @objc func todayButtonTapped() {
         if startTimeTF.isFirstResponder {
-            startTimeTF.text = DateHelper.dateToString("MMMM dd, yyyy", Date())
+            startTimeTF.text = DateHelper.shared.dateToString("MMMM dd, yyyy", Date())
             startTimeTF.resignFirstResponder()
         }
         if endTimeTF.isFirstResponder {
-            endTimeTF.text = DateHelper.dateToString("MMMM dd, yyyy", Date())
+            endTimeTF.text = DateHelper.shared.dateToString("MMMM dd, yyyy", Date())
             endTimeTF.resignFirstResponder()
         }
     }

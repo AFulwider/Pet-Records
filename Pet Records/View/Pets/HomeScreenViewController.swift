@@ -11,17 +11,29 @@ import Firebase
 
 class HomeScreenViewController: UIViewController, UITableViewDelegate {
     
+    var petArray = [Pet?]()
     let backgroundImageView = UIImageView()
     let menuButton = UIButton()
-    let cellID = "cellID"
-    
     let bottomLabel = UITextView()
-    
-    enum petPics:String {
-        case pp0,pp1,pp2,pp3,pp4,pp5,pp6,pp7,pp8,pp9
-    }
-    
+    let cellID = "cellID"
     let petCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: UICollectionViewLayout())
+    let divider = UIView()
+
+    let alert = NewPetUIView()
+    var alertBool : Bool = false
+    
+    func fetchUserPets() {
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]   {
+                let pet = Pet(dictionary : dictionary)
+                self.petArray.append(pet)
+                DispatchQueue.main.async(execute: {
+                    self.petCollectionView.reloadData()
+                })
+            }
+        }
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -29,14 +41,11 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        for i in navigationController!.viewControllers {
-//            print("i.title: \(i)")
-//        }
         topUI()
         collectionViewUI()
         bottomUI()
+        fetchUserPets()
         view.backgroundColor = .white
-        title = "Home"
     }
     
     func topUI(){
@@ -62,7 +71,6 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         menuButton.backgroundColor = .black
         menuButton.setTitle("Menu", for: .normal)
         menuButton.addTarget(self, action: #selector(menuButtonTapped), for: [.touchUpInside, .touchDragExit])
-        
     }
     
     func bottomUI() {
@@ -72,10 +80,9 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         bottomLabel.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         bottomLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         bottomLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        
         bottomLabel.textColor = .systemPurple
         bottomLabel.isUserInteractionEnabled = false
-        
+        bottomLabel.backgroundColor = UIColor(red: 0.1, green: 0.4, blue: 0.9, alpha: 0.5)
         bottomLabel.text =
             "Dogs: 5\n" +
             "Cats: 1\n" +
@@ -83,19 +90,20 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
             "Appointments Pending: 1\n" +
             "Vaccines Due: 0\n" +
             "Pets need grooming: 9"
-        
-        bottomLabel.backgroundColor = UIColor(red: 0.1, green: 0.4, blue: 0.9, alpha: 0.5)
     }
     
     @objc func menuButtonTapped() {
-        let vc = MenuViewController()
-        view.addSubview(vc)
-        vc.translatesAutoresizingMaskIntoConstraints = false
-        vc.backgroundColor = .blue
-        vc.topAnchor.constraint(equalTo: petCollectionView.bottomAnchor, constant: 5).isActive = true
-        vc.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -5).isActive = true
-        vc.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        vc.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
+        if !alertBool {
+            alert.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
+            self.view.setNeedsLayout()
+        } else {
+            alertBool = false
+            alert.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width).isActive = true
+            self.view.setNeedsLayout()
+        }
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
     }
     
     // MARK: - LOGOUT
@@ -130,17 +138,35 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         petCollectionView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         petCollectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
         petCollectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-        petCollectionView.backgroundColor = .black
+        petCollectionView.backgroundColor = UIColor(red: 0/255, green: 100/255, blue: 255/255, alpha: 0.5)
+        
+        view.addSubview(divider)
+        divider.translatesAutoresizingMaskIntoConstraints = false
+        divider.topAnchor.constraint(equalTo: petCollectionView.bottomAnchor).isActive = true
+        divider.heightAnchor.constraint(equalToConstant: 3).isActive = true
+        divider.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        divider.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        divider.backgroundColor = .black
+        
+        view.addSubview(alert)
+        alert.translatesAutoresizingMaskIntoConstraints = false
+        
+        alert.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        alert.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        alert.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: view.frame.width).isActive = true
+        alert.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return petArray.count + 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellID, for: indexPath) as! petCollectionViewCell
-        
-        if indexPath.row < 49 {
+        if indexPath.row < petArray.count {
+            let row = indexPath.row
+            cell.abbLabel.text = petArray[row]?.name
             let rand = Int.random(in: 1...10)
             switch rand {
             case 0:
@@ -171,10 +197,39 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         }
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print("indexpath.row:\(indexPath.row), petArray.count: \(petArray.count)")
+        if indexPath.row == petArray.count {
+            let vc = AddPetViewController()
+            _ = navigationController?.pushViewController(vc, animated: true)
+        } else {
+            if let pet = petArray[indexPath.row] {
+                let vc = PetDetailsViewController()
+                vc.pet = pet
+                vc.view.backgroundColor = .white
+                _ = navigationController?.pushViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    //    @objc func openAlertView() {
+    //        if !alertBool {
+    //            UIView.animate(withDuration: 2) {
+    //                self.alert.bottomAnchor.constraint(equalTo: self.petCollectionView.bottomAnchor).isActive = true
+    //            }
+    //        } else {
+    //            UIView.animate(withDuration: 2) {
+    //                self.alert.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+    //            }
+    //        }
+    //    }
 }
 
 class petCollectionViewCell : UICollectionViewCell {
     let petImageView = UIImageView()
+    let abbLabel = UILabel()
+    
     override init(frame: CGRect) {
         super.init(frame: .zero)
         cellUI()
@@ -186,7 +241,9 @@ class petCollectionViewCell : UICollectionViewCell {
     
     func cellUI() {
         addSubview(petImageView)
+        addSubview(abbLabel)
         petImageView.translatesAutoresizingMaskIntoConstraints = false
+        abbLabel.translatesAutoresizingMaskIntoConstraints = false
         
         petImageView.topAnchor.constraint(equalTo: topAnchor).isActive = true
         petImageView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -200,5 +257,11 @@ class petCollectionViewCell : UICollectionViewCell {
         petImageView.layer.cornerRadius = 4
         petImageView.layer.borderWidth = 0.4
         petImageView.layer.borderColor = UIColor.white.cgColor
+        
+        abbLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        abbLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        abbLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        abbLabel.textColor = .systemGray
+        abbLabel.textAlignment = .center
     }
 }

@@ -24,20 +24,21 @@ class TabBarViewController: UITabBarController {
     
     func tabSetup() {
         let item1 = HomeScreenViewController()
-        let icon1 = UITabBarItem(title: "Home", image: .none, tag: 0)
+        let item2 = AllPetAppointmentsTableViewController()
+        let item3 = mapsViewController()
+        
+        let icon1 = UITabBarItem(title: "Home", image: UIImage(named: "Box"), tag: 0)
+        let icon2 = UITabBarItem(title: "Appointments", image: UIImage(named: "Box"), tag: 1)
+        let icon3 = UITabBarItem(title: "Maps", image:  UIImage(named: "Box"), tag: 2)
+        
         item1.tabBarItem = icon1
-        
-        
-        let item2 = HomeScreenViewController()
-        let icon2 = UITabBarItem(title: "Appointments", image: .none, tag: 1)
         item2.tabBarItem = icon2
-        
-        let item3 = HomeScreenViewController()
-        let icon3 = UITabBarItem(title: "POI", image: .none, tag: 2)
         item3.tabBarItem = icon3
         
-        let vcArray = [item1,item2,item3] // add more views as they become available
+        let vcArray = [item1,item2,item3]
         self.viewControllers = vcArray
+        self.tabBar.barTintColor = .white
+        self.tabBar.tintColor = .red
     }
     
     @objc func settingsTapped() {

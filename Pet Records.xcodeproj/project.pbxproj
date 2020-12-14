@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7B43A13C2585C69000969605 /* mapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43A13B2585C69000969605 /* mapsViewController.swift */; };
+		7B43A13F2586367D00969605 /* NewPetUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43A13E2586367D00969605 /* NewPetUIView.swift */; };
 		7BAC3EE22582D45B00A3824A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3EE12582D45B00A3824A /* MenuViewController.swift */; };
 		CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A234F23E3871C003F1F8E /* AppDelegate.swift */; };
 		CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235123E3871C003F1F8E /* SceneDelegate.swift */; };
@@ -50,6 +52,8 @@
 /* Begin PBXFileReference section */
 		417F959A40DBFA2F416F5D7E /* Pods-Pet Records.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.release.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.release.xcconfig"; sourceTree = "<group>"; };
 		6FECA4DCED89F36EFF406323 /* Pods_Pet_Records.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pet_Records.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7B43A13B2585C69000969605 /* mapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapsViewController.swift; sourceTree = "<group>"; };
+		7B43A13E2586367D00969605 /* NewPetUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPetUIView.swift; sourceTree = "<group>"; };
 		7BAC3EE12582D45B00A3824A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9F6FDBE3327CF0CA322AAA1A /* Pods-Pet Records.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.debug.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.debug.xcconfig"; sourceTree = "<group>"; };
 		CC0A234C23E3871C003F1F8E /* Pet Records.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Records.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -158,6 +162,7 @@
 		CC4700CA25818DD500DB596F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7B43A13E2586367D00969605 /* NewPetUIView.swift */,
 				CC4700D2258195BC00DB596F /* Authenticate */,
 				CC45C537244FD8DA00FC7679 /* Pets */,
 				7BAC3EE12582D45B00A3824A /* MenuViewController.swift */,
@@ -170,6 +175,7 @@
 			children = (
 				CC79611E2585AC6800B4892E /* SettingsViewController.swift */,
 				CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */,
+				7B43A13B2585C69000969605 /* mapsViewController.swift */,
 				CC77854B25845BF100AAB503 /* TabBarViewController.swift */,
 				CC58577923E3ACCE000EF3B3 /* LogInViewController.swift */,
 				CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */,
@@ -381,6 +387,7 @@
 				CCEBC615245A45D700F4F86A /* AllPetVaccinesTableViewController.swift in Sources */,
 				CC45C52E244F912600FC7679 /* PetDetailsViewController.swift in Sources */,
 				CC9BD6EA242D8AE600082E9B /* Constants.swift in Sources */,
+				7B43A13C2585C69000969605 /* mapsViewController.swift in Sources */,
 				CCEBC619245A45F100F4F86A /* AllPetGroomingsTableViewController.swift in Sources */,
 				CC45CAE724425CBE00DBE5C9 /* User.swift in Sources */,
 				CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */,
@@ -395,6 +402,7 @@
 				CC79611F2585AC6800B4892E /* SettingsViewController.swift in Sources */,
 				CC46A67F243C006D000DBAD9 /* PetsTableViewController.swift in Sources */,
 				CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */,
+				7B43A13F2586367D00969605 /* NewPetUIView.swift in Sources */,
 				CC6672DC248AC79600BB9E1F /* ConstraintController.swift in Sources */,
 				CCEBC5F22450288D00F4F86A /* Vaccine.swift in Sources */,
 			);

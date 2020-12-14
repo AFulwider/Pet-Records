@@ -222,7 +222,7 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     @objc func nowButtonTapped() {
-        dateTF.text = DateHelper.dateToString("MMMM dd, yyyy - hh:mm", Date())
+        dateTF.text = DateHelper.shared.dateToString("MMMM dd, yyyy - hh:mm", Date())
         dateTF.resignFirstResponder()
     }
     

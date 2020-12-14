@@ -39,13 +39,17 @@ class AddPetViewController: UIViewController {
     }()
     
     @objc func dateValueChanged(_ sender: UIDatePicker){
-        let string = DateHelper.dateToString("MMMM dd, yyyy", sender.date)
-        dateOfBirthTextField.text = string
+        let dateString = DateHelper.shared.dateToString("MMMM dd, yyyy", sender.date)
+        dateOfBirthTextField.text = dateString
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        view.backgroundColor = .systemGray
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .white
         setupUI()
     }
     
