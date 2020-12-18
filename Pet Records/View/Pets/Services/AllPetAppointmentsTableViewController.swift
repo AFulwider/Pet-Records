@@ -26,8 +26,6 @@ class AllPetAppointmentsTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addAppointmentTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         tableView.register(AppointmentsTableViewCell.self, forCellReuseIdentifier: appointmentCellId)
-        title = "Appointments"
-        view.backgroundColor = .white
     }
     
     func loadPetDetails(){

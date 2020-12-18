@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		7B43A13C2585C69000969605 /* mapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43A13B2585C69000969605 /* mapsViewController.swift */; };
-		7B43A13F2586367D00969605 /* NewPetUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43A13E2586367D00969605 /* NewPetUIView.swift */; };
-		7BAC3EE22582D45B00A3824A /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7BAC3EE12582D45B00A3824A /* MenuViewController.swift */; };
 		CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A234F23E3871C003F1F8E /* AppDelegate.swift */; };
 		CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235123E3871C003F1F8E /* SceneDelegate.swift */; };
 		CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */; };
@@ -18,7 +16,6 @@
 		CC0A236723E387F2003F1F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */; };
 		CC433780244E65C1007A9E04 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43377F244E65C1007A9E04 /* Pet.swift */; };
 		CC433782244E722B007A9E04 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC433781244E722B007A9E04 /* Appointment.swift */; };
-		CC433784244E7378007A9E04 /* AddPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC433783244E7378007A9E04 /* AddPetViewController.swift */; };
 		CC4443EF24716127006C22C8 /* SinglePetVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4443EE24716127006C22C8 /* SinglePetVaccineViewController.swift */; };
 		CC4443F1247162DD006C22C8 /* SinglePetGroomTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4443F0247162DD006C22C8 /* SinglePetGroomTableViewController.swift */; };
 		CC45BA06244946CF008903C7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45BA05244946CF008903C7 /* Extensions.swift */; };
@@ -27,16 +24,16 @@
 		CC45CAE724425CBE00DBE5C9 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAE624425CBE00DBE5C9 /* User.swift */; };
 		CC45CAEE24426E7200DBE5C9 /* UserProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAED24426E7200DBE5C9 /* UserProfileViewController.swift */; };
 		CC45CAF2244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC45CAF1244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift */; };
-		CC46A67F243C006D000DBAD9 /* PetsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC46A67E243C006D000DBAD9 /* PetsTableViewController.swift */; };
 		CC58577A23E3ACCE000EF3B3 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC58577923E3ACCE000EF3B3 /* LogInViewController.swift */; };
 		CC58577C23E3ACE1000EF3B3 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */; };
 		CC6672DA248700A700BB9E1F /* FullBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6672D9248700A700BB9E1F /* FullBackgroundImage.swift */; };
 		CC6672DC248AC79600BB9E1F /* ConstraintController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6672DB248AC79600BB9E1F /* ConstraintController.swift */; };
 		CC77854C25845BF100AAB503 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC77854B25845BF100AAB503 /* TabBarViewController.swift */; };
-		CC79611F2585AC6800B4892E /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC79611E2585AC6800B4892E /* SettingsViewController.swift */; };
 		CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */; };
 		CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */; };
 		CC9BD6EA242D8AE600082E9B /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E9242D8AE600082E9B /* Constants.swift */; };
+		CCD9BE9A25894F4900332623 /* BasicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9BE9925894F4900332623 /* BasicsViewController.swift */; };
+		CCD9BE9D258969A300332623 /* Basics.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD9BE9C258969A300332623 /* Basics.swift */; };
 		CCEBC5F22450288D00F4F86A /* Vaccine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F12450288D00F4F86A /* Vaccine.swift */; };
 		CCEBC5F62450510800F4F86A /* Groom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F52450510800F4F86A /* Groom.swift */; };
 		CCEBC5F824505B9700F4F86A /* AddVaccineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F724505B9700F4F86A /* AddVaccineViewController.swift */; };
@@ -53,8 +50,6 @@
 		417F959A40DBFA2F416F5D7E /* Pods-Pet Records.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.release.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.release.xcconfig"; sourceTree = "<group>"; };
 		6FECA4DCED89F36EFF406323 /* Pods_Pet_Records.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pet_Records.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B43A13B2585C69000969605 /* mapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapsViewController.swift; sourceTree = "<group>"; };
-		7B43A13E2586367D00969605 /* NewPetUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewPetUIView.swift; sourceTree = "<group>"; };
-		7BAC3EE12582D45B00A3824A /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		9F6FDBE3327CF0CA322AAA1A /* Pods-Pet Records.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.debug.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.debug.xcconfig"; sourceTree = "<group>"; };
 		CC0A234C23E3871C003F1F8E /* Pet Records.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Records.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0A234F23E3871C003F1F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -66,7 +61,6 @@
 		CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CC43377F244E65C1007A9E04 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		CC433781244E722B007A9E04 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
-		CC433783244E7378007A9E04 /* AddPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPetViewController.swift; sourceTree = "<group>"; };
 		CC4443EE24716127006C22C8 /* SinglePetVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePetVaccineViewController.swift; sourceTree = "<group>"; };
 		CC4443F0247162DD006C22C8 /* SinglePetGroomTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePetGroomTableViewController.swift; sourceTree = "<group>"; };
 		CC45BA05244946CF008903C7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -75,16 +69,16 @@
 		CC45CAE624425CBE00DBE5C9 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		CC45CAED24426E7200DBE5C9 /* UserProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileViewController.swift; sourceTree = "<group>"; };
 		CC45CAF1244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePetAppointmentViewController.swift; sourceTree = "<group>"; };
-		CC46A67E243C006D000DBAD9 /* PetsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PetsTableViewController.swift; sourceTree = "<group>"; };
 		CC58577923E3ACCE000EF3B3 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		CC6672D9248700A700BB9E1F /* FullBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullBackgroundImage.swift; sourceTree = "<group>"; };
 		CC6672DB248AC79600BB9E1F /* ConstraintController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintController.swift; sourceTree = "<group>"; };
 		CC77854B25845BF100AAB503 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Pet Records/View/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
-		CC79611E2585AC6800B4892E /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonCustom.swift; sourceTree = "<group>"; };
 		CC9BD6E9242D8AE600082E9B /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		CCD9BE9925894F4900332623 /* BasicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicsViewController.swift; sourceTree = "<group>"; };
+		CCD9BE9C258969A300332623 /* Basics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Basics.swift; sourceTree = "<group>"; };
 		CCEBC5F12450288D00F4F86A /* Vaccine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Vaccine.swift; sourceTree = "<group>"; };
 		CCEBC5F52450510800F4F86A /* Groom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Groom.swift; sourceTree = "<group>"; };
 		CCEBC5F724505B9700F4F86A /* AddVaccineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddVaccineViewController.swift; sourceTree = "<group>"; };
@@ -151,9 +145,8 @@
 			children = (
 				CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */,
 				CC45CAED24426E7200DBE5C9 /* UserProfileViewController.swift */,
-				CC46A67E243C006D000DBAD9 /* PetsTableViewController.swift */,
-				CC433783244E7378007A9E04 /* AddPetViewController.swift */,
 				CC45C52D244F912600FC7679 /* PetDetailsViewController.swift */,
+				CCD9BE9925894F4900332623 /* BasicsViewController.swift */,
 				CC4700D42581961800DB596F /* Services */,
 			);
 			path = Pets;
@@ -162,10 +155,8 @@
 		CC4700CA25818DD500DB596F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				7B43A13E2586367D00969605 /* NewPetUIView.swift */,
 				CC4700D2258195BC00DB596F /* Authenticate */,
 				CC45C537244FD8DA00FC7679 /* Pets */,
-				7BAC3EE12582D45B00A3824A /* MenuViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -173,7 +164,6 @@
 		CC4700D2258195BC00DB596F /* Authenticate */ = {
 			isa = PBXGroup;
 			children = (
-				CC79611E2585AC6800B4892E /* SettingsViewController.swift */,
 				CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */,
 				7B43A13B2585C69000969605 /* mapsViewController.swift */,
 				CC77854B25845BF100AAB503 /* TabBarViewController.swift */,
@@ -214,6 +204,7 @@
 				CC43377F244E65C1007A9E04 /* Pet.swift */,
 				CCEBC5F12450288D00F4F86A /* Vaccine.swift */,
 				CC433781244E722B007A9E04 /* Appointment.swift */,
+				CCD9BE9C258969A300332623 /* Basics.swift */,
 				CCEBC5F52450510800F4F86A /* Groom.swift */,
 			);
 			path = Model;
@@ -373,7 +364,6 @@
 				CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */,
 				CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */,
 				CC4443F1247162DD006C22C8 /* SinglePetGroomTableViewController.swift in Sources */,
-				7BAC3EE22582D45B00A3824A /* MenuViewController.swift in Sources */,
 				CCEBC5FC245063E700F4F86A /* AddGroomingViewController.swift in Sources */,
 				CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */,
 				CC45CAF2244276AB00DBE5C9 /* SinglePetAppointmentViewController.swift in Sources */,
@@ -394,15 +384,13 @@
 				CC45CAEE24426E7200DBE5C9 /* UserProfileViewController.swift in Sources */,
 				CC4443EF24716127006C22C8 /* SinglePetVaccineViewController.swift in Sources */,
 				CC433780244E65C1007A9E04 /* Pet.swift in Sources */,
-				CC433784244E7378007A9E04 /* AddPetViewController.swift in Sources */,
 				CCEBC61124567B6400F4F86A /* DateHelper.swift in Sources */,
 				CC45C532244FD05100FC7679 /* HeaderLabel.swift in Sources */,
 				CCEBC5F824505B9700F4F86A /* AddVaccineViewController.swift in Sources */,
+				CCD9BE9A25894F4900332623 /* BasicsViewController.swift in Sources */,
+				CCD9BE9D258969A300332623 /* Basics.swift in Sources */,
 				CC58577A23E3ACCE000EF3B3 /* LogInViewController.swift in Sources */,
-				CC79611F2585AC6800B4892E /* SettingsViewController.swift in Sources */,
-				CC46A67F243C006D000DBAD9 /* PetsTableViewController.swift in Sources */,
 				CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */,
-				7B43A13F2586367D00969605 /* NewPetUIView.swift in Sources */,
 				CC6672DC248AC79600BB9E1F /* ConstraintController.swift in Sources */,
 				CCEBC5F22450288D00F4F86A /* Vaccine.swift in Sources */,
 			);

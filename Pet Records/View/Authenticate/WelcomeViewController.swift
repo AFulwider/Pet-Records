@@ -23,7 +23,6 @@ class WelcomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         if Auth.auth().currentUser != nil {
-//            let vc = HomeScreenViewController()
             let vc = TabBarViewController()
             DispatchQueue.main.async {
                 _ = self.navigationController?.pushViewController(vc, animated: false)
@@ -33,7 +32,7 @@ class WelcomeViewController: UIViewController {
             print("no user currently logged in")
         }
         viewLayout()
-        navigationController?.navigationBar.barTintColor = Colors.darkBlue
+        navigationController?.navigationBar.barTintColor = .white
     }
     
     func viewLayout(){

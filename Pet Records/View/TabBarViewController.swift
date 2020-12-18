@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class TabBarViewController: UITabBarController {
     
@@ -16,10 +17,9 @@ class TabBarViewController: UITabBarController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        view.backgroundColor = .white
         tabSetup()
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "cog"), style: .plain, target: self, action: #selector(settingsTapped))
-        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logoutTapped))
     }
     
     func tabSetup() {
@@ -41,8 +41,29 @@ class TabBarViewController: UITabBarController {
         self.tabBar.tintColor = .red
     }
     
-    @objc func settingsTapped() {
-        let vc = SettingsViewController()
-        _ = navigationController?.pushViewController(vc, animated: true)
+    @objc func logoutTapped() {
+        let alert = UIAlertController(title: "Do you want to log out?", message: "", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Logout", style: .destructive, handler: { action in
+            do {
+                try Auth.auth().signOut()
+//                let vc = WelcomeViewController()
+//                _ = self.navigationController?.pushViewController(vc, animated: true)
+                
+                
+                
+                let vc = WelcomeViewController()
+                let navigationController = self.navigationController
+                navigationController?.setViewControllers([vc], animated:false)
+                
+            }
+            catch { print("already logged out")
+            }
+        }))
+        
+        // show the alert
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }

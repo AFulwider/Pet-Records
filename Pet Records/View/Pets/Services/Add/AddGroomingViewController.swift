@@ -31,7 +31,7 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
     
     let toolBar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
     
-    var petObjects = [Pet?]()
+    var petArray = [Pet?]()
     var currentPet : Pet?
     
     let datePicker: UIDatePicker = {
@@ -48,14 +48,14 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
         dateTF.text = dateFormatter.string(from: sender.date)
     }
     
-    let petCellId = "cellid"
+    let petCellId = "cellID"
     
     func fetchVaccine() {
         let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("users").child(uid!).child("pets").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
                 let pet = Pet(dictionary : dictionary)
-                self.petObjects.append(pet)
+                self.petArray.append(pet)
                 DispatchQueue.main.async(execute: {
                     self.petListTV.reloadData()
                 })
@@ -100,7 +100,7 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
         cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+//        cancelButton.addTarget(self, action: #selector(CancelNameEnter_KeyboardDown), for: .touchUpInside)
         
         submitButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -10).isActive = true
         submitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
@@ -138,7 +138,7 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
         helpLabel.bottomAnchor.constraint(equalTo: titleTF.topAnchor, constant: -10).isActive = true
         helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
         helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        helpLabel.font = UIFont(name: "ChalkboardSE-Bold", size: 26)
+        helpLabel.font = UIFont(name: "Chalkboard SE", size: 26)
         helpLabel.text = "HI! Fill out the textfields below to complete your appointment form."
         helpLabel.textColor = Colors.darkBrown
         helpLabel.textAlignment = .justified
@@ -194,18 +194,18 @@ class AddGroomingViewController: UIViewController, UITableViewDelegate, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return petObjects.count
+        return petArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: petCellId, for: indexPath) as! PetSelectCell
-        cell.name.text = petObjects[indexPath.row]?.name
-        cell.breed.text = petObjects[indexPath.row]?.breed
+        cell.name.text = petArray[indexPath.row]?.name
+        cell.breed.text = petArray[indexPath.row]?.breed
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let pet = petObjects[indexPath.row]
+        let pet = petArray[indexPath.row]
         petSelectButton.setTitle(pet!.name, for: .normal)
         currentPet = pet
         petListView.isHidden = true

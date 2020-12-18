@@ -27,10 +27,9 @@ class LogInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .white
         self.navigationItem.setHidesBackButton(true, animated: true)
-        view.backgroundColor = Colors.lightPurple
         viewLayout()
-        title = "LogInViewController"
     }
     
     func viewLayout(){
@@ -61,7 +60,7 @@ class LogInViewController: UIViewController {
         backgroundImageView.contentMode = .scaleAspectFit
         backgroundImageView.image = UIImage(named: "PawPrints")
         
-        vertStackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
+        vertStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         vertStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
         vertStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20).isActive = true
         vertStackView.distribution = .fillEqually
@@ -72,30 +71,34 @@ class LogInViewController: UIViewController {
         horStackView.axis = .horizontal
         horStackView.spacing = 4
         
+//        cancelButton.addTarget(self, action: #selector(CancelNameEnter_KeyboardDown), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
-        cancelButton.backgroundColor = Colors.darkPurple
+        cancelButton.backgroundColor = .systemRed
         cancelButton.setTitle("Cancel", for: .normal)
         
         submitButton.addTarget(self, action: #selector(logInTapped), for: .touchUpInside)
-        submitButton.backgroundColor = Colors.lightGreen
+        submitButton.backgroundColor = .systemGreen
         submitButton.setTitle("Submit", for: .normal)
-        
         
         errorLabel.bottomAnchor.constraint(equalTo: vertStackView.topAnchor, constant: -10).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: vertStackView.leadingAnchor).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: vertStackView.trailingAnchor).isActive = true
         errorLabel.numberOfLines = 0
+        errorLabel.textColor = .systemRed
         errorLabel.alpha = 0
         
-        emailTextField.delegate = self
         emailTextField.backgroundColor = .white
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor.black.cgColor
-        
-        passwordTextField.delegate = self
+        emailTextField.autocorrectionType = .no
+        emailTextField.placeholder = "Email"
+
         passwordTextField.backgroundColor = .white
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = UIColor.black.cgColor
+        passwordTextField.isSecureTextEntry = true
+        passwordTextField.autocorrectionType = .no
+        passwordTextField.placeholder = "Password"
     }
     
     @objc func logInTapped() {
@@ -104,7 +107,6 @@ class LogInViewController: UIViewController {
         //
         Auth.auth().signIn(withEmail: email, password: password) { (result, error) in
             if error != nil {
-                // couldn't sign in
                 self.errorLabel.text = error!.localizedDescription
                 self.errorLabel.alpha = 1
             } else {

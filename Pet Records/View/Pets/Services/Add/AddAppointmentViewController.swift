@@ -42,7 +42,7 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
     
     func loadPets() {
         let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("users").child(uid!).child("pets").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
                 let pet = Pet(dictionary : dictionary)
                 self.pets.append(pet)
@@ -67,7 +67,6 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         petListTV.delegate = self
         petListTV.dataSource = self
         petListTV.register(PetSelectCell.self, forCellReuseIdentifier: petCellId)
-        view.backgroundColor = .white
     }
     
     @objc func doneButtonTapped() {
@@ -111,7 +110,7 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         cancelButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
-        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+//        cancelButton.addTarget(self, action: #selector(CancelNameEnter_KeyboardDown), for: .touchUpInside)
         cancelButton.setTitle("Cancel", for: .normal)
         
         submitButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -10).isActive = true // SUBMIT BUTTON
@@ -150,7 +149,7 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         petSelectButton.bottomAnchor.constraint(equalTo: locationTF.topAnchor, constant: -10).isActive = true
         petSelectButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         petSelectButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-        petSelectButton.backgroundColor = Colors.mediumPurple
+        petSelectButton.backgroundColor = .white
         petSelectButton.setTitle("select pet", for: .normal)
         petSelectButton.addTarget(self, action: #selector(selectPetForApp), for: .touchUpInside)
         
@@ -170,7 +169,7 @@ class AddAppointmentViewController: UIViewController, MKMapViewDelegate, CLLocat
         helpLabel.bottomAnchor.constraint(equalTo: titleTF.topAnchor, constant: -10).isActive = true
         helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
         helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        helpLabel.font = UIFont(name: "ChalkboardSE-Bold", size: 26)
+        helpLabel.font = UIFont(name: "Chalkboard SE", size: 26)
         helpLabel.text = "HI! Fill out the textfields below to complete your appointment form."
         helpLabel.textColor = Colors.darkBrown
         helpLabel.textAlignment = .justified

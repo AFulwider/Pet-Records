@@ -14,9 +14,9 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     var petArray = [Pet?]()
     var currentPet : Pet?
     
-    let titleTF = UITextField()
-    let startTimeTF = UITextField()
-    let endTimeTF = UITextField()
+    let titleTextField = UITextField()
+    let startTimeTextField = UITextField()
+    let endTimeTextField = UITextField()
     let toolBar = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
     let toolBar2 = UIToolbar(frame:CGRect(x:0, y:0, width:100, height:100))
     
@@ -34,11 +34,11 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var petSelectedBool = Bool()
     var petSelectViewBool = Bool()
-    let petCellId = "cellid"
+    let petCellId = "cellID"
     
     func fetchVaccine() {
         let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("user_pets").child(uid!).observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("users").child(uid!).child("pets").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
                 let pet = Pet(dictionary : dictionary)
                 self.petArray.append(pet)
@@ -57,7 +57,6 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         petListTV.register(PetSelectCell.self, forCellReuseIdentifier: petCellId)
-        title = "Vaccines"
         petSelectedBool = false
         petSelectViewBool = false
         setupUI()
@@ -65,11 +64,6 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
         petListTV.delegate = self
         petListTV.dataSource = self
         petListView.isHidden = true
-        view.backgroundColor = .white
-    }
-    
-    func loadPet(){
-        
     }
     
     let startDatePicker: UIDatePicker = {
@@ -113,18 +107,18 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     func setupUI(){
         view.addSubview(cancelButton)
         view.addSubview(submitButton)
-        view.addSubview(endTimeTF)
-        view.addSubview(startTimeTF)
-        view.addSubview(titleTF)
+        view.addSubview(endTimeTextField)
+        view.addSubview(startTimeTextField)
+        view.addSubview(titleTextField)
         view.addSubview(errorLabel)
         view.addSubview(helpLabel)
         view.addSubview(petSelectButton)
         
         cancelButton.translatesAutoresizingMaskIntoConstraints = false
         submitButton.translatesAutoresizingMaskIntoConstraints = false
-        endTimeTF.translatesAutoresizingMaskIntoConstraints = false
-        startTimeTF.translatesAutoresizingMaskIntoConstraints = false
-        titleTF.translatesAutoresizingMaskIntoConstraints = false
+        endTimeTextField.translatesAutoresizingMaskIntoConstraints = false
+        startTimeTextField.translatesAutoresizingMaskIntoConstraints = false
+        titleTextField.translatesAutoresizingMaskIntoConstraints = false
         errorLabel.translatesAutoresizingMaskIntoConstraints = false
         helpLabel.translatesAutoresizingMaskIntoConstraints = false
         petSelectButton.translatesAutoresizingMaskIntoConstraints = false
@@ -134,7 +128,7 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
         cancelButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         cancelButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         cancelButton.setTitle("Cancel", for: .normal)
-        cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
+        //        cancelButton.addTarget(self, action: #selector(CancelNameEnter_KeyboardDown), for: .touchUpInside)
         
         submitButton.bottomAnchor.constraint(equalTo: cancelButton.topAnchor, constant: -10).isActive = true
         submitButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
@@ -168,36 +162,36 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
         petSelectButton.setTitle("select pet", for: .normal)
         petSelectButton.addTarget(self, action: #selector(selectPetForApp), for: .touchUpInside)
         
-        endTimeTF.bottomAnchor.constraint(equalTo: petSelectButton.topAnchor, constant: -20).isActive = true
-        endTimeTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        endTimeTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-        endTimeTF.inputView = endDatePicker
-        endTimeTF.inputAccessoryView = toolBar
+        endTimeTextField.bottomAnchor.constraint(equalTo: petSelectButton.topAnchor, constant: -20).isActive = true
+        endTimeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        endTimeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        endTimeTextField.inputView = endDatePicker
+        endTimeTextField.inputAccessoryView = toolBar
         
-        startTimeTF.bottomAnchor.constraint(equalTo: endTimeTF.topAnchor, constant: -10).isActive = true
-        startTimeTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        startTimeTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-        startTimeTF.inputView = startDatePicker
-        startTimeTF.inputAccessoryView = toolBar
+        startTimeTextField.bottomAnchor.constraint(equalTo: endTimeTextField.topAnchor, constant: -10).isActive = true
+        startTimeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        startTimeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        startTimeTextField.inputView = startDatePicker
+        startTimeTextField.inputAccessoryView = toolBar
         
-        titleTF.bottomAnchor.constraint(equalTo: startTimeTF.topAnchor, constant: -10).isActive = true
-        titleTF.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
-        titleTF.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-        titleTF.text = nil
-        titleTF.inputAccessoryView = toolBar2
+        titleTextField.bottomAnchor.constraint(equalTo: startTimeTextField.topAnchor, constant: -10).isActive = true
+        titleTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
+        titleTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
+        titleTextField.text = nil
+        titleTextField.inputAccessoryView = toolBar2
         
-        errorLabel.bottomAnchor.constraint(equalTo: titleTF.topAnchor, constant: -40).isActive = true
+        errorLabel.bottomAnchor.constraint(equalTo: titleTextField.topAnchor, constant: -40).isActive = true
         errorLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         errorLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         errorLabel.numberOfLines = 0
         errorLabel.alpha = 0
-        errorLabel.textColor = .red
+        errorLabel.textColor = .systemRed
         errorLabel.textAlignment = .center
         
-        helpLabel.bottomAnchor.constraint(equalTo: titleTF.topAnchor, constant: -10).isActive = true
+        helpLabel.bottomAnchor.constraint(equalTo: titleTextField.topAnchor, constant: -10).isActive = true
         helpLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 40).isActive = true
         helpLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -40).isActive = true
-        helpLabel.font = UIFont(name: "ChalkboardSE-Bold", size: 26)
+        helpLabel.font = UIFont(name: "Chalkboard SE", size: 26)
         helpLabel.text = "HI! Fill out the textfields below to complete your appointment form."
         helpLabel.textColor = Colors.darkBrown
         helpLabel.textAlignment = .justified
@@ -216,7 +210,6 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
         petListView.bottomAnchor.constraint(equalTo: petSelectButton.topAnchor, constant: -5).isActive = true
         petListView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30).isActive = true
         petListView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
-        petListView.backgroundColor = .white
         
         petListCancelButton.topAnchor.constraint(equalTo: petListView.topAnchor, constant: 1).isActive = true
         petListCancelButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
@@ -275,11 +268,11 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     @objc func dateValueChanged(_ sender: UIDatePicker){
         if sender == startDatePicker {
             let string = DateHelper.shared.dateToString("MMMM dd, yyyy", sender.date)
-            startTimeTF.text = string
+            startTimeTextField.text = string
         }
         if sender == endDatePicker{
             let string = DateHelper.shared.dateToString("MMMM dd, yyyy", sender.date)
-            endTimeTF.text = string
+            endTimeTextField.text = string
         }
     }
     
@@ -288,34 +281,32 @@ class AddVaccineViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     @objc func todayButtonTapped() {
-        if startTimeTF.isFirstResponder {
-            startTimeTF.text = DateHelper.shared.dateToString("MMMM dd, yyyy", Date())
-            startTimeTF.resignFirstResponder()
+        if startTimeTextField.isFirstResponder {
+            startTimeTextField.text = DateHelper.shared.dateToString("MMMM dd, yyyy", Date())
+            startTimeTextField.resignFirstResponder()
         }
-        if endTimeTF.isFirstResponder {
-            endTimeTF.text = DateHelper.shared.dateToString("MMMM dd, yyyy", Date())
-            endTimeTF.resignFirstResponder()
+        if endTimeTextField.isFirstResponder {
+            endTimeTextField.text = DateHelper.shared.dateToString("MMMM dd, yyyy", Date())
+            endTimeTextField.resignFirstResponder()
         }
     }
     
     @objc func doneButtonTapped() {
-        startTimeTF.resignFirstResponder()
-        endTimeTF.resignFirstResponder()
-        titleTF.resignFirstResponder()
+        startTimeTextField.resignFirstResponder()
+        endTimeTextField.resignFirstResponder()
+        titleTextField.resignFirstResponder()
     }
     
     @objc func saveData(/*_ lat: CLLocationDegrees, _ lon: CLLocationDegrees*/){
-        if titleTF.text != "" && startTimeTF.text != "" && endTimeTF.text != "" && petSelectedBool == true {
+        if titleTextField.text != "" && startTimeTextField.text != "" && endTimeTextField.text != "" && petSelectedBool == true {
             if let uid = Auth.auth().currentUser?.uid {
                 let ref = Database.database().reference().child("user_vaccines").child(uid)
                 let childRef = ref.childByAutoId()
-                let appValues = ["vac_id" : childRef.key!, "title" : titleTF.text!, "start_time" : startTimeTF.text!, "end_time" : endTimeTF.text!, "pet_id" : currentPet?.pid! as Any] as [String : Any]
+                let appValues = ["vac_id" : childRef.key!, "title" : titleTextField.text!, "start_time" : startTimeTextField.text!, "end_time" : endTimeTextField.text!, "pet_id" : currentPet?.pid! as Any] as [String : Any]
                 childRef.updateChildValues(appValues)
-                
                 _ = navigationController?.popViewController(animated: true)
             }
         } else {
-            // Textfields not filled out properly
             helpLabel.textColor = .red
             helpLabel.text = "Please fill out the required textfields!"
         }

@@ -22,16 +22,16 @@ class HeaderLabel: UILabel {
     func setup(){
         setShadow()
         textColor = .black
-        font    = UIFont(name: "ChalkboardSE-Bold", size: 26)
+        font    = UIFont(name: "Chalkboard SE", size: 26)
         adjustsFontSizeToFitWidth = true
     }
     
     private func setShadow(){
-        layer.shadowColor   = UIColor.black.cgColor
-        layer.shadowOffset  = CGSize(width: 0.0, height: 6.0)
-        layer.shadowRadius  = 8
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOffset = CGSize(width: 0.0, height: 6.0)
+        layer.shadowRadius = 8
         layer.shadowOpacity = 0.5
-        clipsToBounds       = true
+        clipsToBounds = true
         layer.masksToBounds = false
     }
 }

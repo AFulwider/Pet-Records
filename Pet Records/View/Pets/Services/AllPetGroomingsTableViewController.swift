@@ -26,8 +26,6 @@ class AllPetGroomingsTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addGroomingTapped))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         tableView.register(GroomingTableviewCell.self, forCellReuseIdentifier: groomCellId)
-        title = "Grooming"
-        view.backgroundColor = .white
     }
     
     func loadPetDetails(){

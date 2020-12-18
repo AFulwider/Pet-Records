@@ -23,10 +23,7 @@ class AllPetVaccinesTableViewController: UITableViewController, UIGestureRecogni
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addVaccineTapped))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Home", style: .plain, target: self, action: #selector(backButton))
         tableView.register(VacineTableViewCell.self, forCellReuseIdentifier: vaccineCellId)
-        title = "Vaccines"
-        view.backgroundColor = .white
     }
     
     func loadVaccines(){
@@ -40,10 +37,6 @@ class AllPetVaccinesTableViewController: UITableViewController, UIGestureRecogni
                 })
             }
         }
-    }
-    
-    @objc func backButton(){
-        navigationController?.popViewController(animated: true)
     }
     
     @objc func addVaccineTapped(){
@@ -63,7 +56,6 @@ class AllPetVaccinesTableViewController: UITableViewController, UIGestureRecogni
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: vaccineCellId, for: indexPath) as! VacineTableViewCell
         cell.titleLabel.textColor = .black
-        cell.startDateLabel.textColor = Colors.darkPurple
         cell.titleLabel.text = vaccines[indexPath.row]?.title
         cell.startDateLabel.text = vaccines[indexPath.row]?.startDate
         cell.endDateLabel.text = vaccines[indexPath.row]?.endDate

@@ -12,72 +12,47 @@ import Firebase
 class PetDetailsViewController: UIViewController, UITabBarDelegate {
     
     let topView = UIView()
-    let profileImageView = UIImageView()
-    let nameLabel = HeaderLabel()
+    let nameLabel = UILabel()
     let breedLabel = UILabel()
     let genderLabel = UILabel()
     let dobLabel = UILabel()
+    let cellID = "cellid"
+    let dataTableView = UITableView()
     
-    let vacTVLabel = UILabel()
-    let appTVLabel = UILabel()
-    let groomTVLabel = UILabel()
     
-    let petVacVC = SinglePetVaccineViewController()
-    let petAppVC = SinglePetAppointmentViewController()
-    let petGroomVC = SinglePetGroomTableViewController()
-    
-    let scrollView = UIScrollView()
-    var scrollViewHeight : CGFloat = 230
+    var alertTextFieldGender : String? = nil
+    var alertTextFieldBreed : String? = nil
+    var alertTextFieldDoB : String? = nil
     
     var pet : Pet?
+    let deletePetButton = UIButton()
+    
+    let dataArray = ["Vaccines", "Appointments", "Grooming", "Basics"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        petVacVC.pet = pet
-        petAppVC.pet = pet
-        petGroomVC.pet = pet
-        setupUI()
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        scrollView.contentSize = CGSize(width: view.frame.width, height: scrollViewHeight + 195)
         view.backgroundColor = .white
+        dataTableView.register(PetDetailsCell.self, forCellReuseIdentifier: cellID)
+        setupUI()
+        dataTableView.delegate = self
+        dataTableView.dataSource = self
+        tableViewUI()
+        checkForProperties()
     }
     
     func setupUI() {
         view.addSubview(topView)
-        view.addSubview(scrollView)
         
-        topView.addSubview(profileImageView)
         topView.addSubview(nameLabel)
         topView.addSubview(breedLabel)
         topView.addSubview(genderLabel)
         topView.addSubview(dobLabel)
         
-        scrollView.addSubview(petVacVC.view)
-        scrollView.addSubview(petAppVC.view)
-        scrollView.addSubview(petGroomVC.view)
-        
-        petVacVC.view.addSubview(vacTVLabel)
-        petAppVC.view.addSubview(appTVLabel)
-        petGroomVC.view.addSubview(groomTVLabel)
-        
         topView.translatesAutoresizingMaskIntoConstraints = false
-        profileImageView.translatesAutoresizingMaskIntoConstraints = false
         nameLabel.translatesAutoresizingMaskIntoConstraints = false
         breedLabel.translatesAutoresizingMaskIntoConstraints = false
         genderLabel.translatesAutoresizingMaskIntoConstraints = false
         dobLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        vacTVLabel.translatesAutoresizingMaskIntoConstraints = false
-        appTVLabel.translatesAutoresizingMaskIntoConstraints = false
-        groomTVLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        petVacVC.view.translatesAutoresizingMaskIntoConstraints = false
-        petAppVC.view.translatesAutoresizingMaskIntoConstraints = false
-        petGroomVC.view.translatesAutoresizingMaskIntoConstraints = false
         
         //MARK: TOPVIEW
         topView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
@@ -85,79 +60,223 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         topView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         topView.heightAnchor.constraint(equalToConstant: 110).isActive = true
         
-        profileImageView.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10).isActive = true
-        profileImageView.leadingAnchor.constraint(equalTo: topView.leadingAnchor, constant: 10).isActive = true
-        profileImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
-        profileImageView.widthAnchor.constraint(equalToConstant: 100).isActive = true
-        profileImageView.backgroundColor = .black
-        
         nameLabel.topAnchor.constraint(equalTo: topView.topAnchor, constant: 10).isActive = true
-        nameLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10).isActive = true
-        nameLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+        nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        nameLabel.heightAnchor.constraint(equalToConstant: 65).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        nameLabel.font = UIFont(name:"Chalkboard SE", size: 50)
+        nameLabel.textAlignment = .center
+//        nameLabel.backgroundColor = .systemBlue
+        nameLabel.baselineAdjustment = .alignCenters
+        nameLabel.lineBreakMode = .byClipping
+        nameLabel.adjustsFontSizeToFitWidth = true
         nameLabel.text = pet?.name
         
-        breedLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5).isActive = true
-        breedLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10).isActive = true
-        breedLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        breedLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        breedLabel.text = pet?.breed
-        
-        genderLabel.topAnchor.constraint(equalTo: breedLabel.bottomAnchor, constant: 5).isActive = true
-        genderLabel.leadingAnchor.constraint(equalTo: profileImageView.trailingAnchor, constant: 10).isActive = true
-        genderLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        genderLabel.widthAnchor.constraint(equalToConstant: 50).isActive = true
+        genderLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5).isActive = true
+        genderLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        genderLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        genderLabel.trailingAnchor.constraint(equalTo: breedLabel.leadingAnchor, constant: -5).isActive = true
+        genderLabel.font = UIFont(name:"Chalkboard SE", size: 20)
+        genderLabel.textAlignment = .left
+        genderLabel.baselineAdjustment = .alignCenters
+        genderLabel.adjustsFontSizeToFitWidth = true
+//        genderLabel.backgroundColor = .systemGreen
         genderLabel.text = pet?.gender
         
-        dobLabel.topAnchor.constraint(equalTo: breedLabel.bottomAnchor, constant: 5).isActive = true
-        dobLabel.leadingAnchor.constraint(equalTo: genderLabel.trailingAnchor, constant: 5).isActive = true
-        dobLabel.heightAnchor.constraint(equalToConstant: 25).isActive = true
+        breedLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5).isActive = true
+        breedLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
+        breedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        breedLabel.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
+        breedLabel.font = UIFont(name:"Chalkboard SE", size: 50)
+        breedLabel.textAlignment = .center
+//        breedLabel.backgroundColor = .systemRed
+        breedLabel.numberOfLines = 1
+        breedLabel.baselineAdjustment = .alignCenters
+        breedLabel.adjustsFontSizeToFitWidth = true
+        breedLabel.text = pet?.breed
+        
+        dobLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5).isActive = true
+        dobLabel.leadingAnchor.constraint(equalTo: breedLabel.trailingAnchor, constant: 5).isActive = true
+        dobLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         dobLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        dobLabel.font = UIFont(name:"Chalkboard SE", size: 20)
+        dobLabel.adjustsFontSizeToFitWidth = true
+        dobLabel.baselineAdjustment = .alignCenters
         dobLabel.textAlignment = .right
+//        dobLabel.backgroundColor = .systemPurple
         dobLabel.text = pet?.dob
+        tempUI()
+    }
+    
+    func tempUI() {
+        view.addSubview(deletePetButton)
+        deletePetButton.translatesAutoresizingMaskIntoConstraints = false
         
-        //MARK: SCROLLVIEW
-        scrollView.topAnchor.constraint(equalTo: topView.bottomAnchor).isActive = true
-        scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
-        scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
-        scrollView.isScrollEnabled = true
-        scrollView.contentSize = CGSize(width: view.frame.width, height: scrollViewHeight)
+        deletePetButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
+        deletePetButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        deletePetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        deletePetButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        deletePetButton.backgroundColor = .systemRed
+        deletePetButton.setTitle("DELETE", for: .normal)
         
-        //MARK: Vaccine TableView
-        vacTVLabel.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
-        vacTVLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-        vacTVLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        vacTVLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        vacTVLabel.text = "Vaccines"
+        deletePetButton.addTarget(self, action: #selector(basicButtonTapped), for: .touchUpInside)
+    }
+    
+    @objc func basicButtonTapped() {
+        let vc = BasicsViewController()
+        vc.pet = pet
+        _ = navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    func checkForProperties() {
+        print("outside of statement")
+        if genderLabel.text == "" , breedLabel.text == "" , dobLabel.text == "" {
+            print("inside of statement")
+            let alert = UIAlertController(title: "Please fill out the required fields.", message: "", preferredStyle: .alert)
+            
+            if genderLabel.text == "" {
+                alert.addTextField { (textField) in
+                    textField.placeholder = "GENDER"
+                    self.alertTextFieldGender = textField.text!
+                }
+            }
+            
+            if breedLabel.text == "" {
+                alert.addTextField { (textField) in
+                    textField.placeholder = "BREED"
+                    self.alertTextFieldBreed = textField.text!
+                }
+            }
+            
+            if dobLabel.text == "" {
+                alert.addTextField { (textField) in
+                    textField.placeholder = "DATE OF BIRTH"
+                    self.alertTextFieldDoB = textField.text!
+                }
+            }
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in _ = self.navigationController?.popViewController(animated: true) }))
+            
+            alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alert] (action) in
+                
+                
+                self.alertTextFieldGender = (alert?.textFields![0].text)!
+                self.alertTextFieldBreed! = (alert?.textFields![1].text)!
+                self.alertTextFieldDoB! = (alert?.textFields![2].text)!
+                self.saveToPet()
+            }))
+            present(alert, animated: true, completion: nil)
+        }
+    }
+    
+    func saveToPet() {
+        let uid = Auth.auth().currentUser?.uid
+        var values = [String:String]()
         
-        petVacVC.view.topAnchor.constraint(equalTo: vacTVLabel.bottomAnchor, constant: 1).isActive = true
-        petVacVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        petVacVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        petVacVC.view.isUserInteractionEnabled = false
+        if alertTextFieldGender != nil {
+            values["gender"] = alertTextFieldGender!
+        }
         
-        //MARK: Appointments TableView
-        appTVLabel.topAnchor.constraint(equalTo: petVacVC.view.bottomAnchor).isActive = true
-        appTVLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-        appTVLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        appTVLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        appTVLabel.text = "Appointments"
+        if alertTextFieldBreed != nil {
+            values["breed"] = alertTextFieldBreed!
+        }
         
-        petAppVC.view.topAnchor.constraint(equalTo: appTVLabel.bottomAnchor, constant: 1).isActive = true
-        petAppVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        petAppVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        petAppVC.view.isUserInteractionEnabled = false
+        if alertTextFieldDoB != nil {
+            values["dob"] = alertTextFieldDoB!
+        }
         
-        //MARK: Grooming TableView
-        groomTVLabel.topAnchor.constraint(equalTo: petAppVC.view.bottomAnchor).isActive = true
-        groomTVLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 15).isActive = true
-        groomTVLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        groomTVLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-        groomTVLabel.text = "Grooming"
+        print("values: \(values)")
+        let ref = Database.database().reference().child("users").child(uid!).child("pets").child((pet?.pid)!)
+        DispatchQueue.main.async(execute: {
+            ref.updateChildValues(values)
+            self.view.reloadInputViews()
+        })
+    }
+}
+
+extension PetDetailsViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dataArray.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PetDetailsCell
         
-        petGroomVC.view.topAnchor.constraint(equalTo: groomTVLabel.bottomAnchor, constant: 1).isActive = true
-        petGroomVC.view.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 5).isActive = true
-        petGroomVC.view.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -5).isActive = true
-        petGroomVC.view.isUserInteractionEnabled = false
+        cell.titleLabel.text = dataArray[indexPath.row]
+        cell.accessoryType = .disclosureIndicator
+        cell.selectionStyle = .none
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 40
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        
+        switch row {
+        case 0:
+            let vc = AllPetVaccinesTableViewController()
+            vc.pet = pet
+            _ = navigationController?.pushViewController(vc, animated: true)
+        case 1:
+            let vc = AllPetAppointmentsTableViewController()
+            vc.pet = pet
+            _ = navigationController?.pushViewController(vc, animated: true)
+        case 2:
+            let vc = AllPetGroomingsTableViewController()
+            vc.pet = pet
+            _ = navigationController?.pushViewController(vc, animated: true)
+        case 3:
+            let vc = BasicsViewController()
+            vc.pet = pet
+            _ = navigationController?.pushViewController(vc, animated: true)
+        default:
+            print("default")
+        }
+    }
+    
+    func tableViewUI() {
+        view.addSubview(dataTableView)
+        dataTableView.translatesAutoresizingMaskIntoConstraints = false
+        dataTableView.topAnchor.constraint(equalTo: topView.bottomAnchor, constant: 30).isActive = true
+        dataTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        dataTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        dataTableView.bottomAnchor.constraint(equalTo: deletePetButton.topAnchor).isActive = true
+        dataTableView.separatorStyle = .none
+        dataTableView.layer.borderWidth = 1
+        dataTableView.layer.borderColor = UIColor.black.cgColor
+    }
+}
+
+class PetDetailsCell : UITableViewCell {
+    let titleLabel = UILabel()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        setupUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func setupUI() {
+        addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
+        titleLabel.textAlignment = .center
     }
 }

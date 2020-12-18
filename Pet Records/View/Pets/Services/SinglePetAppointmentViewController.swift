@@ -38,7 +38,6 @@ class SinglePetAppointmentViewController: UIViewController, UITableViewDelegate,
         appointmentTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         appointmentTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         appointmentTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        appointmentTableView.backgroundColor = .clear
         appointmentTableView.separatorInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         appointmentTableView.delegate = self
         appointmentTableView.dataSource = self
@@ -49,7 +48,6 @@ class SinglePetAppointmentViewController: UIViewController, UITableViewDelegate,
         appointmentTableView.register(AppointmentsTableViewCell.self, forCellReuseIdentifier: cellid)
         loadPetDetails()
         setupUI()
-        view.backgroundColor = .white
     }
     
     // MARK: - Table view data source
@@ -58,7 +56,7 @@ class SinglePetAppointmentViewController: UIViewController, UITableViewDelegate,
     }
     
      func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("appointments.count: \(appointments.count)")
+//        print("appointments.count: \(appointments.count)")
         return appointments.count
     }
     
@@ -77,9 +75,9 @@ class SinglePetAppointmentViewController: UIViewController, UITableViewDelegate,
 }
 
 class AppointmentsTableViewCell: UITableViewCell {
-    let petName   = UILabel()
-    let title    = UILabel()
-    let time   = UILabel()
+    let petName = UILabel()
+    let title = UILabel()
+    let time = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)

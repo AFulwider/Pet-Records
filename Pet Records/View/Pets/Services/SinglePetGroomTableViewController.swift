@@ -18,11 +18,9 @@ class SinglePetGroomTableViewController: UIViewController, UITableViewDelegate, 
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Grooming"
         groomingTableView.register(GroomingTableviewCell.self, forCellReuseIdentifier: cellId)
         loadPetDetails()
         setupUI()
-        view.backgroundColor = .white
     }
     
     func loadPetDetails(){
@@ -46,7 +44,6 @@ class SinglePetGroomTableViewController: UIViewController, UITableViewDelegate, 
         groomingTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         groomingTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         groomingTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        groomingTableView.backgroundColor = .clear
         groomingTableView.separatorInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         groomingTableView.delegate = self
         groomingTableView.dataSource = self

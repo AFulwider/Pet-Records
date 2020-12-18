@@ -36,7 +36,6 @@ class SinglePetVaccineViewController: UIViewController, UITableViewDelegate, UIT
         vaccineTableView.register(VacineTableViewCell.self, forCellReuseIdentifier: cellid)
         loadPetDetails()
         setupUI()
-        view.backgroundColor = .white
     }
     
     func setupUI() {
@@ -46,7 +45,6 @@ class SinglePetVaccineViewController: UIViewController, UITableViewDelegate, UIT
         vaccineTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         vaccineTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         vaccineTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        vaccineTableView.backgroundColor = .clear
         vaccineTableView.separatorInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
         vaccineTableView.delegate = self
         vaccineTableView.dataSource = self
