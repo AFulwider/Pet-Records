@@ -64,9 +64,9 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         nameLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         nameLabel.heightAnchor.constraint(equalToConstant: 65).isActive = true
         nameLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        nameLabel.font = UIFont(name:"Chalkboard SE", size: 50)
+        nameLabel.font = UIFont(name:"Chalkboard SE", size: 45)
         nameLabel.textAlignment = .center
-//        nameLabel.backgroundColor = .systemBlue
+        nameLabel.backgroundColor = .systemBlue
         nameLabel.baselineAdjustment = .alignCenters
         nameLabel.lineBreakMode = .byClipping
         nameLabel.adjustsFontSizeToFitWidth = true
@@ -76,20 +76,20 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         genderLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
         genderLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         genderLabel.trailingAnchor.constraint(equalTo: breedLabel.leadingAnchor, constant: -5).isActive = true
-        genderLabel.font = UIFont(name:"Chalkboard SE", size: 20)
+        genderLabel.font = UIFont(name:"Chalkboard SE", size: 12)
         genderLabel.textAlignment = .left
         genderLabel.baselineAdjustment = .alignCenters
         genderLabel.adjustsFontSizeToFitWidth = true
-//        genderLabel.backgroundColor = .systemGreen
+        genderLabel.backgroundColor = .systemGreen
         genderLabel.text = pet?.gender
         
         breedLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 5).isActive = true
         breedLabel.heightAnchor.constraint(equalToConstant: 35).isActive = true
         breedLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         breedLabel.widthAnchor.constraint(equalToConstant: view.frame.width/3).isActive = true
-        breedLabel.font = UIFont(name:"Chalkboard SE", size: 50)
+        breedLabel.font = UIFont(name:"Chalkboard SE", size:  30)
         breedLabel.textAlignment = .center
-//        breedLabel.backgroundColor = .systemRed
+        breedLabel.backgroundColor = .systemRed
         breedLabel.numberOfLines = 1
         breedLabel.baselineAdjustment = .alignCenters
         breedLabel.adjustsFontSizeToFitWidth = true
@@ -99,26 +99,21 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         dobLabel.leadingAnchor.constraint(equalTo: breedLabel.trailingAnchor, constant: 5).isActive = true
         dobLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
         dobLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
-        dobLabel.font = UIFont(name:"Chalkboard SE", size: 20)
+        dobLabel.font = UIFont(name:"Chalkboard SE", size: 15)
         dobLabel.adjustsFontSizeToFitWidth = true
         dobLabel.baselineAdjustment = .alignCenters
         dobLabel.textAlignment = .right
-//        dobLabel.backgroundColor = .systemPurple
+        dobLabel.backgroundColor = .systemPurple
         dobLabel.text = pet?.dob
-        tempUI()
-    }
-    
-    func tempUI() {
+        
         view.addSubview(deletePetButton)
         deletePetButton.translatesAutoresizingMaskIntoConstraints = false
-        
         deletePetButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor).isActive = true
         deletePetButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         deletePetButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
         deletePetButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
         deletePetButton.backgroundColor = .systemRed
         deletePetButton.setTitle("DELETE", for: .normal)
-        
         deletePetButton.addTarget(self, action: #selector(basicButtonTapped), for: .touchUpInside)
     }
     
@@ -128,35 +123,27 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         _ = navigationController?.pushViewController(vc, animated: true)
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
     func checkForProperties() {
         print("outside of statement")
-        if genderLabel.text == "" , breedLabel.text == "" , dobLabel.text == "" {
+        if genderLabel.text == nil , breedLabel.text == nil , dobLabel.text == nil {
             print("inside of statement")
             let alert = UIAlertController(title: "Please fill out the required fields.", message: "", preferredStyle: .alert)
             
-            if genderLabel.text == "" {
+            if genderLabel.text == nil {
                 alert.addTextField { (textField) in
                     textField.placeholder = "GENDER"
                     self.alertTextFieldGender = textField.text!
                 }
             }
             
-            if breedLabel.text == "" {
+            if breedLabel.text == nil {
                 alert.addTextField { (textField) in
                     textField.placeholder = "BREED"
                     self.alertTextFieldBreed = textField.text!
                 }
             }
             
-            if dobLabel.text == "" {
+            if dobLabel.text == nil {
                 alert.addTextField { (textField) in
                     textField.placeholder = "DATE OF BIRTH"
                     self.alertTextFieldDoB = textField.text!
@@ -165,8 +152,6 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
             alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in _ = self.navigationController?.popViewController(animated: true) }))
             
             alert.addAction(UIAlertAction(title: "Save", style: .default, handler: { [weak alert] (action) in
-                
-                
                 self.alertTextFieldGender = (alert?.textFields![0].text)!
                 self.alertTextFieldBreed! = (alert?.textFields![1].text)!
                 self.alertTextFieldDoB! = (alert?.textFields![2].text)!
@@ -182,14 +167,17 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         
         if alertTextFieldGender != nil {
             values["gender"] = alertTextFieldGender!
+            pet?.gender = alertTextFieldGender!
         }
         
         if alertTextFieldBreed != nil {
             values["breed"] = alertTextFieldBreed!
+            pet?.gender = alertTextFieldBreed!
         }
         
         if alertTextFieldDoB != nil {
             values["dob"] = alertTextFieldDoB!
+            pet?.gender = alertTextFieldDoB!
         }
         
         print("values: \(values)")
@@ -208,7 +196,6 @@ extension PetDetailsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellID, for: indexPath) as! PetDetailsCell
-        
         cell.titleLabel.text = dataArray[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         cell.selectionStyle = .none
@@ -272,7 +259,6 @@ class PetDetailsCell : UITableViewCell {
     func setupUI() {
         addSubview(titleLabel)
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        
         titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
