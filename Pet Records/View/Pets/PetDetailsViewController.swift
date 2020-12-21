@@ -113,7 +113,7 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
     }
     
     @objc func deletePetButtonTapped() {
-        let alert = UIAlertController(title: "", message: "Are you sure you want to delete this pet from your account?", preferredStyle: .alert)
+        let alert = UIAlertController(title: "", message: "Are you sure you want to delete \(pet?.name ?? "") from your account?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: {_ in _ = self.navigationController?.popViewController(animated: true) }))
         alert.addAction(UIAlertAction(title: "DELETE", style: .destructive, handler: { [self] (action) in
             let uid = Auth.auth().currentUser?.uid

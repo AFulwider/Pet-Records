@@ -19,16 +19,14 @@ class VaccinesTableViewController: UITableViewController {
     var dateTextFieldFunc : UITextField?
     
     func loadPetDetails(){
-        let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("users").child(uid!).child("pets").child(pet!.pid!).child("vaccines").observe(.childAdded) { (snapshot) in
+        let uid = (Auth.auth().currentUser?.uid)!
+        Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("vaccines").observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
-//                if snapshot.childSnapshot(forPath: "pid").value as! String == (self.pet?.pid)! {
-                    let dict = Vaccine(dictionary : dictionary)
-                    self.vaccines.append(dict)
-                    DispatchQueue.main.async(execute: {
-                        self.tableView.reloadData()
-                    })
-//                }
+                let dict = Vaccine(dictionary : dictionary)
+                self.vaccines.append(dict)
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
             }
         }
     }
@@ -47,7 +45,6 @@ class VaccinesTableViewController: UITableViewController {
         alert.addTextField(configurationHandler: dateTextFieldFunc)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Save", style: .default, handler: self.saveVaccineButtonTapped) )
-        
         present(alert, animated: true, completion: nil)
     }
     
@@ -62,7 +59,6 @@ class VaccinesTableViewController: UITableViewController {
     }
     
     func saveVaccineButtonTapped(alert: UIAlertAction) {
-        
         if let uid = Auth.auth().currentUser?.uid {
             let ref = Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("vaccines")
             let childRef = ref.childByAutoId()
@@ -72,9 +68,6 @@ class VaccinesTableViewController: UITableViewController {
                 self.tableView.reloadData()
             })
         }
-        
-        //        print("title: \(titleTextFieldFunc?.text)")
-        //        print("date: \(dateTextFieldFunc?.text)")
         print("SAVED")
     }
     
@@ -90,7 +83,6 @@ class VaccinesTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! VacineTableViewCell
         cell.titleLabel.text = vaccines[indexPath.row]?.title
         cell.timeLabel.text = vaccines[indexPath.row]?.vacDate
-        
         return cell
     }
     
@@ -99,6 +91,11 @@ class VaccinesTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            
+            let uid = Auth.auth().currentUser?.uid
+            let ref = Database.database().reference().child("users").child(uid!).child("pets").child((pet?.pid)!)
+            ref.removeValue()
+            
             vaccines.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
@@ -108,7 +105,6 @@ class VaccinesTableViewController: UITableViewController {
 }
 
 class VacineTableViewCell:UITableViewCell {
-    
     let titleLabel = UILabel()
     let timeLabel = UILabel()
     
