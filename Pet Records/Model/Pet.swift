@@ -14,7 +14,6 @@ class Pet: NSObject {
     var name: String?
     var breed: String?
     var dob: String?
-    var profileImageURL: String?
     var gender:String?
     
     init(dictionary: [String: Any]) {
@@ -23,6 +22,5 @@ class Pet: NSObject {
         self.breed = dictionary["breed"] as? String
         self.dob = dictionary["dob"] as? String
         self.gender = dictionary["gender"] as? String
-        self.profileImageURL = dictionary["pet_profile_Image"] as? String
     }
 }

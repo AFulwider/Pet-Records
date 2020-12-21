@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 
-class AllPetAppointmentsTableViewController: UITableViewController {
+class AllAppointmentsViewController: UITableViewController {
     
     var appointments = [Appointment?]()
     let appointmentCellId = "appCell"
@@ -30,7 +30,7 @@ class AllPetAppointmentsTableViewController: UITableViewController {
     
     func loadPetDetails(){
         let uid = Auth.auth().currentUser?.uid
-        Database.database().reference().child("user_appointments").child(uid!).observe(.childAdded) { (snapshot) in
+        Database.database().reference().child("appointments").child(uid!).observe(.childAdded) { (snapshot) in
             if let dictionary = snapshot.value as? [String: AnyObject]   {
                 let dict = Appointment(dictionary : dictionary)
                 self.appointments.append(dict)
@@ -50,7 +50,6 @@ class AllPetAppointmentsTableViewController: UITableViewController {
         navigationController?.popViewController(animated: true)
     }
     
-    //MARK: - TABLEVIEWS
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -61,19 +60,13 @@ class AllPetAppointmentsTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: appointmentCellId, for: indexPath) as! AppointmentsTableViewCell
-        cell.title.text = appointments[indexPath.row]?.title
-        cell.petName.text = appointments[indexPath.row]?.petName
-        cell.time.text = appointments[indexPath.row]?.time
+        cell.titleLabel.text = appointments[indexPath.row]?.title
+        cell.descriptionLabel.text = appointments[indexPath.row]?.descriptionString
+        cell.timeLabel.text = appointments[indexPath.row]?.time
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 40
-    }
-    
-    @objc func appointmentsButtonTapped(){
-        print("pets.count\(appointments.count)")
-        let vc = AddAppointmentViewController()
-        _ = navigationController?.pushViewController(vc, animated: true)
     }
 }

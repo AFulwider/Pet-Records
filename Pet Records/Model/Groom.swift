@@ -10,12 +10,11 @@ import UIKit
 
 class Groom: NSObject {
     var title : String?
-    var groomId : String?
-    var detailText : String?
-    var groomDate : String?
+    var descriptionString : String?
+    var time : String?
     init(dictionary: [String: Any]) {
         self.title = dictionary["title"] as? String
-        self.groomId = dictionary["groom_id"] as? String
-        self.groomDate = dictionary["time"] as? String
+        self.descriptionString = dictionary["description"] as? String
+        self.time = dictionary["time"] as? String
     }
 }

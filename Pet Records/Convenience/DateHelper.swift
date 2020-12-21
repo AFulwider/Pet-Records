@@ -50,4 +50,11 @@ class DateHelper {
             return false
         }
     }
+    
+    public func todaysDate() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, h:mm a"
+        let date = dateFormatter.string(from: Date())
+        return date
+    }
 }

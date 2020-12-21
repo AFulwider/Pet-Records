@@ -59,6 +59,7 @@ class LogInViewController: UIViewController {
         backgroundImageView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         backgroundImageView.contentMode = .scaleAspectFit
         backgroundImageView.image = UIImage(named: "PawPrints")
+        backgroundImageView.backgroundColor = .white
         
         vertStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         vertStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20).isActive = true
@@ -121,7 +122,7 @@ class LogInViewController: UIViewController {
     }
     
     func transitionToHomeScreen(){
-        let vc = HomeScreenViewController()
+        let vc = TabBarViewController()
         let navigationController = self.navigationController
         navigationController?.setViewControllers([vc], animated:false)
     }

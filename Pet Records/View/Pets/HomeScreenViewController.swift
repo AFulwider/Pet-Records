@@ -97,7 +97,9 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
         let ref = Database.database().reference().child("users").child(uid!).child("pets")
         let childRef = ref.childByAutoId()
         let values = ["pid": childRef.key!,"name": addPetTextField.text!]
-        DispatchQueue.main.async(execute: { childRef.updateChildValues(values) })
+        DispatchQueue.main.async(execute: {
+            childRef.updateChildValues(values)
+        })
         addPetTextField.text = ""
     }
     
@@ -130,12 +132,11 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
         flowLayout.scrollDirection = .vertical
         flowLayout.sectionInset = UIEdgeInsets(top: 10, left: 4, bottom: 10, right: 4)
         
+        view.addSubview(petCollectionView)
         petCollectionView.delegate = self
         petCollectionView.dataSource = self
         petCollectionView.register(petCollectionViewCell.self, forCellWithReuseIdentifier: cellID)
         petCollectionView.collectionViewLayout = flowLayout
-        view.addSubview(petCollectionView)
-        
         petCollectionView.translatesAutoresizingMaskIntoConstraints = false
         petCollectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         petCollectionView.bottomAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
@@ -157,7 +158,6 @@ extension HomeScreenViewController: UICollectionViewDelegate, UICollectionViewDa
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print("indexpath.row:\(indexPath.row), petArray.count: \(petArray.count)")
         if let pet = petArray[indexPath.row] {
             let vc = PetDetailsViewController()
             vc.pet = pet

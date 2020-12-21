@@ -24,7 +24,7 @@ class TabBarViewController: UITabBarController {
     
     func tabSetup() {
         let item1 = HomeScreenViewController()
-        let item2 = AllPetAppointmentsTableViewController()
+        let item2 = AllAppointmentsViewController()
         let item3 = mapsViewController()
         
         let icon1 = UITabBarItem(title: "Home", image: UIImage(named: "Box"), tag: 0)
@@ -54,8 +54,7 @@ class TabBarViewController: UITabBarController {
                 
                 
                 let vc = WelcomeViewController()
-                let navigationController = self.navigationController
-                navigationController?.setViewControllers([vc], animated:false)
+                self.navigationController?.setViewControllers([vc], animated:false)
                 
             }
             catch { print("already logged out")

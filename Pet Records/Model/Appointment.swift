@@ -9,17 +9,15 @@
 import UIKit
 
 class Appointment:NSObject {
-    var appId:String?
     var title:String?
+    var descriptionString:String?
     var time:String?
     var location:String?
-    var petName:String?
     init(dictionary: [String: Any]) {
-        self.appId = dictionary["app_id"] as? String
         self.title = dictionary["title"] as? String
+        self.descriptionString = dictionary["description"] as? String
         self.time = dictionary["time"] as? String
         self.location = dictionary["location"] as? String
-        self.petName = dictionary["pet_name"] as? String
     }
 }
 

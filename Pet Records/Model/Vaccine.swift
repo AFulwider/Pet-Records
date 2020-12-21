@@ -9,14 +9,10 @@
 import UIKit
 
 class Vaccine: NSObject {
-    var vacId : String?
     var title: String?
-    var startDate: String?
-    var endDate: String?
+    var vacDate: String?
     init(dictionary: [String: Any]) {
-        self.vacId = dictionary["vac_id"] as? String
         self.title = dictionary["title"] as? String
-        self.startDate = dictionary["start_time"] as? String
-        self.endDate = dictionary["end_time"] as? String
+        self.vacDate = dictionary["date"] as? String
     }
 }

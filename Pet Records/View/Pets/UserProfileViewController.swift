@@ -65,7 +65,6 @@ class UserProfileViewController: UIViewController {
     }
     // MARK: - LOGOUT
     @objc func signOut(){
-        print("signOutTapped")
         do {
             try Auth.auth().signOut()
         } catch let logoutError {
