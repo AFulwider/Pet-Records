@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		7B43A13C2585C69000969605 /* mapsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43A13B2585C69000969605 /* mapsViewController.swift */; };
+		7B43A13C2585C69000969605 /* PDFMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43A13B2585C69000969605 /* PDFMaker.swift */; };
 		CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A234F23E3871C003F1F8E /* AppDelegate.swift */; };
 		CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235123E3871C003F1F8E /* SceneDelegate.swift */; };
 		CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */; };
 		CC0A235C23E3871D003F1F8E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC0A235B23E3871D003F1F8E /* Assets.xcassets */; };
 		CC0A235F23E3871D003F1F8E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC0A235D23E3871D003F1F8E /* LaunchScreen.storyboard */; };
 		CC0A236723E387F2003F1F8E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */; };
+		CC3F9FAA2590B49300D53E2A /* PDFPreviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3F9FA92590B49300D53E2A /* PDFPreviewController.swift */; };
 		CC433780244E65C1007A9E04 /* Pet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC43377F244E65C1007A9E04 /* Pet.swift */; };
 		CC433782244E722B007A9E04 /* Appointment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC433781244E722B007A9E04 /* Appointment.swift */; };
 		CC4443EF24716127006C22C8 /* VaccinesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC4443EE24716127006C22C8 /* VaccinesTableViewController.swift */; };
@@ -52,7 +53,7 @@
 /* Begin PBXFileReference section */
 		417F959A40DBFA2F416F5D7E /* Pods-Pet Records.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.release.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.release.xcconfig"; sourceTree = "<group>"; };
 		6FECA4DCED89F36EFF406323 /* Pods_Pet_Records.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pet_Records.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7B43A13B2585C69000969605 /* mapsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapsViewController.swift; sourceTree = "<group>"; };
+		7B43A13B2585C69000969605 /* PDFMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFMaker.swift; sourceTree = "<group>"; };
 		9F6FDBE3327CF0CA322AAA1A /* Pods-Pet Records.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.debug.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.debug.xcconfig"; sourceTree = "<group>"; };
 		CC0A234C23E3871C003F1F8E /* Pet Records.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Records.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0A234F23E3871C003F1F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,6 +63,7 @@
 		CC0A235E23E3871D003F1F8E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC0A236023E3871D003F1F8E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Pet Records/SupportingFiles/Info.plist"; sourceTree = SOURCE_ROOT; };
 		CC0A236623E387F2003F1F8E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CC3F9FA92590B49300D53E2A /* PDFPreviewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFPreviewController.swift; sourceTree = "<group>"; };
 		CC43377F244E65C1007A9E04 /* Pet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pet.swift; sourceTree = "<group>"; };
 		CC433781244E722B007A9E04 /* Appointment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Appointment.swift; sourceTree = "<group>"; };
 		CC4443EE24716127006C22C8 /* VaccinesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccinesTableViewController.swift; sourceTree = "<group>"; };
@@ -170,7 +172,8 @@
 			isa = PBXGroup;
 			children = (
 				CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */,
-				7B43A13B2585C69000969605 /* mapsViewController.swift */,
+				7B43A13B2585C69000969605 /* PDFMaker.swift */,
+				CC3F9FA92590B49300D53E2A /* PDFPreviewController.swift */,
 				CC77854B25845BF100AAB503 /* TabBarViewController.swift */,
 				CC58577923E3ACCE000EF3B3 /* LogInViewController.swift */,
 				CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */,
@@ -202,8 +205,8 @@
 				CCEBC5F12450288D00F4F86A /* Vaccine.swift */,
 				CC433781244E722B007A9E04 /* Appointment.swift */,
 				CCEBC5F52450510800F4F86A /* Groom.swift */,
-				CCBEF66425901E1700A571E7 /* Food.swift */,
 				CCBEF64B25901ABC00A571E7 /* Medication.swift */,
+				CCBEF66425901E1700A571E7 /* Food.swift */,
 				CCBEF6712590296200A571E7 /* Injury.swift */,
 			);
 			path = Model;
@@ -394,7 +397,8 @@
 				CC77854C25845BF100AAB503 /* TabBarViewController.swift in Sources */,
 				CC45C52E244F912600FC7679 /* PetDetailsViewController.swift in Sources */,
 				CC9BD6EA242D8AE600082E9B /* Constants.swift in Sources */,
-				7B43A13C2585C69000969605 /* mapsViewController.swift in Sources */,
+				7B43A13C2585C69000969605 /* PDFMaker.swift in Sources */,
+				CC3F9FAA2590B49300D53E2A /* PDFPreviewController.swift in Sources */,
 				CC45CAE724425CBE00DBE5C9 /* User.swift in Sources */,
 				CCBEF64F25901B4000A571E7 /* MedicationTableViewController.swift in Sources */,
 				CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */,

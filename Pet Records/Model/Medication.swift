@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import Firebase
 
 class Medication: NSObject {
     var title: String?
     var descriptionString: String?
-    init(dict: [String:AnyObject]) {
-        self.title = dict["title"] as? String
-        self.descriptionString = dict["description"] as? String
+    var id: String?
+    init(dictionary: [String:AnyObject]) {
+        self.title = dictionary["title"] as? String
+        self.descriptionString = dictionary["description"] as? String
+        self.id = dictionary["id"] as? String
     }
 }

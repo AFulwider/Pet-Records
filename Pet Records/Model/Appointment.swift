@@ -13,11 +13,13 @@ class Appointment:NSObject {
     var descriptionString:String?
     var time:String?
     var location:String?
+    var id:String?
     init(dictionary: [String: Any]) {
         self.title = dictionary["title"] as? String
         self.descriptionString = dictionary["description"] as? String
         self.time = dictionary["time"] as? String
         self.location = dictionary["location"] as? String
+        self.id = dictionary["id"] as? String
     }
 }
 

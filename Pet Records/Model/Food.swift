@@ -7,15 +7,16 @@
 //
 
 import UIKit
-import Firebase
 
 class Food: NSObject {
     var title: String?
-    var habits:String?
+//    var habits:String?
     var descriptionString: String?
-    init(dict: [String:AnyObject]) {
-        self.title = dict["title"] as? String
-        self.habits = dict["habits"] as? String
-        self.descriptionString = dict["description"] as? String
+    var id: String?
+    init(dictionary: [String:AnyObject]) {
+        self.title = dictionary["title"] as? String
+//        self.habits = dict["habits"] as? String
+        self.descriptionString = dictionary["description"] as? String
+        self.id = dictionary["id"] as? String
     }
 }

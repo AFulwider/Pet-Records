@@ -11,8 +11,9 @@ import UIKit
 class Vaccine: NSObject {
     var title: String?
     var vacDate: String?
+    var id:String?
     init(dictionary: [String: Any]) {
         self.title = dictionary["title"] as? String
         self.vacDate = dictionary["date"] as? String
-    }
+        self.id = dictionary["id"] as? String    }
 }

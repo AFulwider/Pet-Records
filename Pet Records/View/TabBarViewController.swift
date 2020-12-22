@@ -25,7 +25,7 @@ class TabBarViewController: UITabBarController {
     func tabSetup() {
         let item1 = HomeScreenViewController()
         let item2 = AllAppointmentsViewController()
-        let item3 = mapsViewController()
+        let item3 = PDFPreviewController()
         
         let icon1 = UITabBarItem(title: "Home", image: UIImage(named: "Box"), tag: 0)
         let icon2 = UITabBarItem(title: "Appointments", image: UIImage(named: "Box"), tag: 1)

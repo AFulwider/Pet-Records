@@ -15,6 +15,10 @@ class GroomingTableViewController: UITableViewController {
     let cellId = "cellID"
     var pet : Pet?
     
+    var titleTextFieldFunc : UITextField?
+    var descriptionTextFieldFunc : UITextField?
+    var dateTextFieldFunc : UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addGroomButtonTapped))
@@ -22,22 +26,55 @@ class GroomingTableViewController: UITableViewController {
         loadPetDetails()
     }
     
-    @objc func addGroomButtonTapped() {
-        // Add alert view here
-    }
-    
     func loadPetDetails(){
-        if let uid = Auth.auth().currentUser?.uid {
-            Database.database().reference().child(uid).child("pets").child(pet!.pid!).child("grooming").observe(.childAdded) { (snapshot) in
-                if let dictionary = snapshot.value as? [String: AnyObject]   {
-                    let groom = Groom(dictionary : dictionary)
-                    self.grooms.append(groom)
-                    DispatchQueue.main.async(execute: {
-                        self.tableView.reloadData()
-                    })
-                }
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).child("pets").child(pet!.pid!).child("grooming").observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]   {
+                let dict = Groom(dictionary : dictionary)
+                self.grooms.append(dict)
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
             }
         }
+    }
+    
+    @objc func addGroomButtonTapped() {
+        let alert = UIAlertController(title: "Enter the details of your grooming", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: titleTextFieldFunc)
+        alert.addTextField(configurationHandler: descriptionTextFieldFunc)
+        alert.addTextField(configurationHandler: dateTextFieldFunc)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: self.saveGroomingButtonTapped) )
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func titleTextFieldFunc(textField:UITextField!) {
+        titleTextFieldFunc = textField
+        titleTextFieldFunc?.placeholder = "Title"
+    }
+    
+    func descriptionTextFieldFunc(textField:UITextField!) {
+        descriptionTextFieldFunc = textField
+        descriptionTextFieldFunc?.placeholder = "Description"
+    }
+    
+    func dateTextFieldFunc(textField:UITextField!) {
+        dateTextFieldFunc = textField
+        dateTextFieldFunc?.placeholder = DateHelper.shared.todaysDate()
+    }
+    
+    func saveGroomingButtonTapped(alert: UIAlertAction) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("grooming")
+            let childRef = ref.childByAutoId()
+            let values = ["title": titleTextFieldFunc!.text!,"description": descriptionTextFieldFunc!.text!,"time": dateTextFieldFunc!.text!, "id":childRef.key!] as [AnyHashable : Any]
+            DispatchQueue.main.async(execute: {
+                childRef.updateChildValues(values)
+                self.tableView.reloadData()
+            })
+        }
+        print("SAVED")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -59,6 +96,18 @@ class GroomingTableViewController: UITableViewController {
         cell.descriptionLabel.text = groom?.descriptionString
         cell.timeLabel.text = groom?.time
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let uid = Auth.auth().currentUser?.uid
+            let ref = Database.database().reference().child("users").child(uid!).child("pets").child((pet?.pid)!).child("grooming").child((grooms[indexPath.row]?.id!)!)
+            ref.removeValue()
+            grooms.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
 }
 

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Firebase
 
 class Pet: NSObject {
     var pid: String?
@@ -15,7 +14,6 @@ class Pet: NSObject {
     var breed: String?
     var dob: String?
     var gender:String?
-    
     init(dictionary: [String: Any]) {
         self.pid = dictionary["pid"] as? String
         self.name = dictionary["name"] as? String

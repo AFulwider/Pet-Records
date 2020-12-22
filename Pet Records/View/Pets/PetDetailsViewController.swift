@@ -11,6 +11,8 @@ import Firebase
 
 class PetDetailsViewController: UIViewController, UITabBarDelegate {
     
+    var vaccines = [Vaccine]()
+    var meds = [Medication]()
     var pet : Pet?
     
     let topView = UIView()
@@ -20,6 +22,7 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
     let dobLabel = UILabel()
     let dataTableView = UITableView()
     let deletePetButton = UIButton()
+    let pDFButton = UIButton()
     
     let cellID = "cellid"
     
@@ -41,6 +44,28 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         dataTableView.dataSource = self
         tableViewUI()
         checkForProperties()
+        loadVaccineTemp()
+        loadMedicationTemp()
+    }
+    
+    func loadVaccineTemp(){
+        let uid = (Auth.auth().currentUser?.uid)!
+        Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("vaccines").observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]   {
+                let dict = Vaccine(dictionary : dictionary)
+                self.vaccines.append(dict)
+            }
+        }
+    }
+    
+    func loadMedicationTemp(){
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).child("pets").child(pet!.pid!).child("medication").observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]   {
+                let dictionary = Medication(dictionary : dictionary)
+                self.meds.append(dictionary)
+            }
+        }
     }
     
     func setupUI() {
@@ -110,6 +135,24 @@ class PetDetailsViewController: UIViewController, UITabBarDelegate {
         deletePetButton.backgroundColor = .systemRed
         deletePetButton.setTitle("DELETE", for: .normal)
         deletePetButton.addTarget(self, action: #selector(deletePetButtonTapped), for: .touchUpInside)
+        
+        view.addSubview(pDFButton)
+        pDFButton.translatesAutoresizingMaskIntoConstraints = false
+        pDFButton.bottomAnchor.constraint(equalTo: deletePetButton.topAnchor).isActive = true
+        pDFButton.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        pDFButton.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        pDFButton.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        pDFButton.backgroundColor = .systemBlue
+        pDFButton.setTitle("PDF", for: .normal)
+        pDFButton.addTarget(self, action: #selector(toPDF), for: .touchUpInside)
+    }
+    
+    @objc func toPDF() {
+        let vc = PDFPreviewController()
+        vc.pet = pet
+        vc.medication = meds
+        vc.vaccine = vaccines
+        _ = navigationController?.pushViewController(vc, animated: true)
     }
     
     @objc func deletePetButtonTapped() {

@@ -34,6 +34,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "home"
         topUI()
         bottomUI()
         fetchUserPets()

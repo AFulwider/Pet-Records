@@ -15,29 +15,59 @@ class FoodTableViewController: UITableViewController {
     let cellId = "cellID"
     var pet : Pet?
     
+    var titleTextFieldFunc : UITextField?
+    var descriptionTextFieldFunc : UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addGroomButtonTapped))
-        tableView.register(GroomingTableviewCell.self, forCellReuseIdentifier: cellId)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addFoodButtonTapped))
+        tableView.register(MedicationTableviewCell.self, forCellReuseIdentifier: cellId)
         loadPetDetails()
     }
     
-    @objc func addGroomButtonTapped() {
-        // CALL ALERT VIEW HERE
-    }
-    
     func loadPetDetails(){
-        if let uid = Auth.auth().currentUser?.uid {
-            Database.database().reference().child(uid).child("pets").child(pet!.pid!).child("food").observe(.childAdded) { (snapshot) in
-                if let dictionary = snapshot.value as? [String: AnyObject]   {
-                    let groom = Food(dict : dictionary)
-                    self.food.append(groom)
-                    DispatchQueue.main.async(execute: {
-                        self.tableView.reloadData()
-                    })
-                }
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).child("pets").child(pet!.pid!).child("food").observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]   {
+                let dictionary = Food(dictionary : dictionary)
+                self.food.append(dictionary)
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
             }
         }
+    }
+    
+    @objc func addFoodButtonTapped() {
+        let alert = UIAlertController(title: "Enter the details of the food", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: titleTextFieldFunc)
+        alert.addTextField(configurationHandler: descriptionTextFieldFunc)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: self.saveFoodButtonTapped) )
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func titleTextFieldFunc(textField:UITextField!) {
+        titleTextFieldFunc = textField
+        titleTextFieldFunc?.placeholder = "Title"
+    }
+    
+    func descriptionTextFieldFunc(textField:UITextField!) {
+        descriptionTextFieldFunc = textField
+        descriptionTextFieldFunc?.placeholder = "Description"
+    }
+    
+    func saveFoodButtonTapped(alert: UIAlertAction) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("food")
+            let childRef = ref.childByAutoId()
+            let values = ["title": titleTextFieldFunc!.text!,"description": descriptionTextFieldFunc!.text!, "id":childRef.key!] as [AnyHashable : Any]
+            DispatchQueue.main.async(execute: {
+                childRef.updateChildValues(values)
+                self.tableView.reloadData()
+            })
+        }
+        print("SAVED")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -53,43 +83,22 @@ class FoodTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! FoodTableviewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicationTableviewCell
         let foo = food[indexPath.row]
         cell.titleLabel.text = foo?.title
         cell.descriptionLabel.text = foo?.descriptionString
         return cell
     }
-}
-
-class FoodTableviewCell:UITableViewCell {
     
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        uiSetup()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func uiSetup(){
-        addSubview(titleLabel)
-        addSubview(descriptionLabel)
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints  = false
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        titleLabel.widthAnchor.constraint(equalToConstant: (frame.width/2)).isActive = true
-        titleLabel.adjustsFontSizeToFitWidth = true
-        
-        descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 2).isActive = true
-        descriptionLabel.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        descriptionLabel.widthAnchor.constraint(equalToConstant: (frame.width/4)).isActive = true
-        descriptionLabel.adjustsFontSizeToFitWidth = true
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let uid = Auth.auth().currentUser?.uid
+            let ref = Database.database().reference().child("users").child(uid!).child("pets").child((pet?.pid)!).child("food").child((food[indexPath.row]?.id!)!)
+            ref.removeValue()
+            food.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
 }

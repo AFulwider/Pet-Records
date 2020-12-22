@@ -15,29 +15,59 @@ class MedicationTableViewController: UITableViewController {
     let cellId = "cellID"
     var pet : Pet?
     
+    var titleTextFieldFunc : UITextField?
+    var descriptionTextFieldFunc : UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addGroomButtonTapped))
-        tableView.register(GroomingTableviewCell.self, forCellReuseIdentifier: cellId)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addMedicationButtonTapped))
+        tableView.register(MedicationTableviewCell.self, forCellReuseIdentifier: cellId)
         loadPetDetails()
     }
     
-    @objc func addGroomButtonTapped() {
-        // CALL ALERT VIEW HERE
-    }
-    
     func loadPetDetails(){
-        if let uid = Auth.auth().currentUser?.uid {
-            Database.database().reference().child(uid).child("pets").child(pet!.pid!).child("medication").observe(.childAdded) { (snapshot) in
-                if let dictionary = snapshot.value as? [String: AnyObject]   {
-                    let groom = Medication(dict : dictionary)
-                    self.meds.append(groom)
-                    DispatchQueue.main.async(execute: {
-                        self.tableView.reloadData()
-                    })
-                }
+        let uid = Auth.auth().currentUser?.uid
+        Database.database().reference().child("users").child(uid!).child("pets").child(pet!.pid!).child("medication").observe(.childAdded) { (snapshot) in
+            if let dictionary = snapshot.value as? [String: AnyObject]   {
+                let dictionary = Medication(dictionary : dictionary)
+                self.meds.append(dictionary)
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
             }
         }
+    }
+    
+    @objc func addMedicationButtonTapped() {
+        let alert = UIAlertController(title: "Enter the details of the medication", message: "", preferredStyle: .alert)
+        alert.addTextField(configurationHandler: titleTextFieldFunc)
+        alert.addTextField(configurationHandler: descriptionTextFieldFunc)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Save", style: .default, handler: self.saveMedicationButtonTapped) )
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func titleTextFieldFunc(textField:UITextField!) {
+        titleTextFieldFunc = textField
+        titleTextFieldFunc?.placeholder = "Title"
+    }
+    
+    func descriptionTextFieldFunc(textField:UITextField!) {
+        descriptionTextFieldFunc = textField
+        descriptionTextFieldFunc?.placeholder = "Description"
+    }
+    
+    func saveMedicationButtonTapped(alert: UIAlertAction) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let ref = Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("medication")
+            let childRef = ref.childByAutoId()
+            let values = ["title": titleTextFieldFunc!.text!,"description": descriptionTextFieldFunc!.text!, "id":childRef.key!] as [AnyHashable : Any]
+            DispatchQueue.main.async(execute: {
+                childRef.updateChildValues(values)
+                self.tableView.reloadData()
+            })
+        }
+        print("SAVED")
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -58,6 +88,18 @@ class MedicationTableViewController: UITableViewController {
         cell.titleLabel.text = med?.title
         cell.descriptionLabel.text = med?.descriptionString
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let uid = Auth.auth().currentUser?.uid
+            let ref = Database.database().reference().child("users").child(uid!).child("pets").child((pet?.pid)!).child("medication").child((meds[indexPath.row]?.id!)!)
+            ref.removeValue()
+            meds.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+        }
     }
 }
 

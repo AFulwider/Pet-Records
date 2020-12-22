@@ -18,6 +18,13 @@ class VaccinesTableViewController: UITableViewController {
     var titleTextFieldFunc : UITextField?
     var dateTextFieldFunc : UITextField?
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addVaccineButtonTapped))
+        tableView.register(VacineTableViewCell.self, forCellReuseIdentifier: cellid)
+        loadPetDetails()
+    }
+    
     func loadPetDetails(){
         let uid = (Auth.auth().currentUser?.uid)!
         Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("vaccines").observe(.childAdded) { (snapshot) in
@@ -29,14 +36,6 @@ class VaccinesTableViewController: UITableViewController {
                 })
             }
         }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addVaccineButtonTapped))
-        tableView.register(VacineTableViewCell.self, forCellReuseIdentifier: cellid)
-        loadPetDetails()
-        print("vaccines.count: \(vaccines.count)")
     }
     
     @objc func addVaccineButtonTapped() {
@@ -62,7 +61,7 @@ class VaccinesTableViewController: UITableViewController {
         if let uid = Auth.auth().currentUser?.uid {
             let ref = Database.database().reference().child("users").child(uid).child("pets").child(pet!.pid!).child("vaccines")
             let childRef = ref.childByAutoId()
-            let values = ["title": titleTextFieldFunc!.text!,"date": dateTextFieldFunc!.text!]
+            let values = ["title": titleTextFieldFunc!.text!,"date": dateTextFieldFunc!.text!, "id":childRef.key!] as [AnyHashable : Any]
             DispatchQueue.main.async(execute: {
                 childRef.updateChildValues(values)
                 self.tableView.reloadData()
@@ -91,11 +90,9 @@ class VaccinesTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            
             let uid = Auth.auth().currentUser?.uid
-            let ref = Database.database().reference().child("users").child(uid!).child("pets").child((pet?.pid)!)
+            let ref = Database.database().reference().child("users").child(uid!).child("pets").child((pet?.pid)!).child("vaccines").child((vaccines[indexPath.row]?.id!)!)
             ref.removeValue()
-            
             vaccines.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
