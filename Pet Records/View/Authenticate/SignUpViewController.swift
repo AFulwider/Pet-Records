@@ -20,7 +20,7 @@
 //
 
 import UIKit
-import Firebase
+import CloudKit
 
 class SignUpViewController: UIViewController, UINavigationControllerDelegate {
     
@@ -56,11 +56,10 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
     
     //TODO: - STILL TRYING TO FIGURE OUT FIRESTORE()
     @objc func signUpTapped() {
-        // Create cleaned versions of data
-        let firstName   = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let lastName    = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let email       = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
-        let password    = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let firstName = firstNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let lastName = lastNameTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let email = emailTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
+        let password = passwordTextField.text!.trimmingCharacters(in: .whitespacesAndNewlines)
         
         // Authenticate
         Auth.auth().createUser(withEmail: email, password: password) { (result, err) in // Create User
@@ -157,7 +156,6 @@ class SignUpViewController: UIViewController, UINavigationControllerDelegate {
         emailTextField.placeholder = "Email"
         
         passwordTextField.backgroundColor = .white
-        passwordTextField.autocapitalizationType = .none
         passwordTextField.layer.borderWidth = 1
         passwordTextField.layer.borderColor = UIColor.black.cgColor
         passwordTextField.isSecureTextEntry = true

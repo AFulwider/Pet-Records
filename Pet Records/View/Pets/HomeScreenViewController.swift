@@ -7,9 +7,9 @@
 //
 
 import UIKit
-import Firebase
+import CloudKit
 
-class HomeScreenViewController: UIViewController, UITableViewDelegate {
+class HomeScreenViewController: UIViewController {
     
     var petArray = [Pet?]()
     let backgroundImageView = UIImageView()

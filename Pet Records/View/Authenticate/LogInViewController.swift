@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import Firebase
-import FirebaseAuth
+import CloudKit
 
 class LogInViewController: UIViewController {
     
@@ -72,7 +71,6 @@ class LogInViewController: UIViewController {
         horStackView.axis = .horizontal
         horStackView.spacing = 4
         
-//        cancelButton.addTarget(self, action: #selector(CancelNameEnter_KeyboardDown), for: .touchUpInside)
         cancelButton.addTarget(self, action: #selector(cancelButtonTapped), for: .touchUpInside)
         cancelButton.backgroundColor = .systemRed
         cancelButton.setTitle("Cancel", for: .normal)
@@ -91,6 +89,7 @@ class LogInViewController: UIViewController {
         emailTextField.backgroundColor = .white
         emailTextField.layer.borderWidth = 1
         emailTextField.layer.borderColor = UIColor.black.cgColor
+        emailTextField.autocapitalizationType = .none
         emailTextField.autocorrectionType = .no
         emailTextField.placeholder = "Email"
 

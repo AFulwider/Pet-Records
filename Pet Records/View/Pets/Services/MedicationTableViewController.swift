@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import CloudKit
 
 class MedicationTableViewController: UITableViewController {
     
@@ -21,7 +21,7 @@ class MedicationTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addMedicationButtonTapped))
-        tableView.register(MedicationTableviewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(MedicationTableViewCell.self, forCellReuseIdentifier: cellId)
         loadPetDetails()
     }
     
@@ -83,7 +83,7 @@ class MedicationTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicationTableviewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicationTableViewCell
         let med = meds[indexPath.row]
         cell.titleLabel.text = med?.title
         cell.descriptionLabel.text = med?.descriptionString
@@ -100,38 +100,5 @@ class MedicationTableViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
-    }
-}
-
-class MedicationTableviewCell:UITableViewCell {
-    
-    let titleLabel = UILabel()
-    let descriptionLabel = UILabel()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        uiSetup()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func uiSetup(){
-        addSubview(titleLabel)
-        addSubview(descriptionLabel)
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints  = false
-        descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-        
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        titleLabel.widthAnchor.constraint(equalToConstant: (frame.width/2)).isActive = true
-        titleLabel.adjustsFontSizeToFitWidth = true
-        
-        descriptionLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 2).isActive = true
-        descriptionLabel.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        descriptionLabel.widthAnchor.constraint(equalToConstant: (frame.width/4)).isActive = true
-        descriptionLabel.adjustsFontSizeToFitWidth = true
     }
 }

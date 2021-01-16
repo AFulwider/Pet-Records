@@ -3,11 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7B43A13C2585C69000969605 /* PDFMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7B43A13B2585C69000969605 /* PDFMaker.swift */; };
+		CC01A7CD25A90A2000D3283C /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC01A7CC25A90A2000D3283C /* CloudKit.framework */; };
 		CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A234F23E3871C003F1F8E /* AppDelegate.swift */; };
 		CC0A235223E3871C003F1F8E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235123E3871C003F1F8E /* SceneDelegate.swift */; };
 		CC0A235423E3871C003F1F8E /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */; };
@@ -32,6 +33,9 @@
 		CC5B2CE2258EDDFE00565D1F /* AddGroomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC5B2CE1258EDDFE00565D1F /* AddGroomViewController.swift */; };
 		CC6672DA248700A700BB9E1F /* FullBackgroundImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6672D9248700A700BB9E1F /* FullBackgroundImage.swift */; };
 		CC6672DC248AC79600BB9E1F /* ConstraintController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6672DB248AC79600BB9E1F /* ConstraintController.swift */; };
+		CC6FF85B259D413400897CD4 /* MedicationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6FF85A259D413400897CD4 /* MedicationTableViewCell.swift */; };
+		CC6FF85F259D418300897CD4 /* GroomingTableviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6FF85E259D418300897CD4 /* GroomingTableviewCell.swift */; };
+		CC6FF862259D41CD00897CD4 /* VaccineTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC6FF861259D41CD00897CD4 /* VaccineTableViewCell.swift */; };
 		CC77854C25845BF100AAB503 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC77854B25845BF100AAB503 /* TabBarViewController.swift */; };
 		CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */; };
 		CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */; };
@@ -47,14 +51,12 @@
 		CCEBC5F62450510800F4F86A /* Groom.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC5F52450510800F4F86A /* Groom.swift */; };
 		CCEBC61124567B6400F4F86A /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC61024567B6400F4F86A /* DateHelper.swift */; };
 		CCEBC617245A45E500F4F86A /* AllAppointmentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCEBC616245A45E500F4F86A /* AllAppointmentsViewController.swift */; };
-		DEAFB27FD8D1B2F62D984440 /* Pods_Pet_Records.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6FECA4DCED89F36EFF406323 /* Pods_Pet_Records.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		417F959A40DBFA2F416F5D7E /* Pods-Pet Records.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.release.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.release.xcconfig"; sourceTree = "<group>"; };
-		6FECA4DCED89F36EFF406323 /* Pods_Pet_Records.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Pet_Records.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B43A13B2585C69000969605 /* PDFMaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDFMaker.swift; sourceTree = "<group>"; };
-		9F6FDBE3327CF0CA322AAA1A /* Pods-Pet Records.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pet Records.debug.xcconfig"; path = "Target Support Files/Pods-Pet Records/Pods-Pet Records.debug.xcconfig"; sourceTree = "<group>"; };
+		CC01A7CA25A90A1D00D3283C /* Pet Records.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Pet Records.entitlements"; sourceTree = "<group>"; };
+		CC01A7CC25A90A2000D3283C /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		CC0A234C23E3871C003F1F8E /* Pet Records.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Pet Records.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC0A234F23E3871C003F1F8E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC0A235123E3871C003F1F8E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -81,6 +83,9 @@
 		CC5B2CE1258EDDFE00565D1F /* AddGroomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroomViewController.swift; sourceTree = "<group>"; };
 		CC6672D9248700A700BB9E1F /* FullBackgroundImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullBackgroundImage.swift; sourceTree = "<group>"; };
 		CC6672DB248AC79600BB9E1F /* ConstraintController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConstraintController.swift; sourceTree = "<group>"; };
+		CC6FF85A259D413400897CD4 /* MedicationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicationTableViewCell.swift; sourceTree = "<group>"; };
+		CC6FF85E259D418300897CD4 /* GroomingTableviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroomingTableviewCell.swift; sourceTree = "<group>"; };
+		CC6FF861259D41CD00897CD4 /* VaccineTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VaccineTableViewCell.swift; sourceTree = "<group>"; };
 		CC77854B25845BF100AAB503 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = "Pet Records/View/TabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		CC9BD6E5242D7C5800082E9B /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		CC9BD6E7242D868000082E9B /* SignInButtonCustom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInButtonCustom.swift; sourceTree = "<group>"; };
@@ -103,28 +108,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DEAFB27FD8D1B2F62D984440 /* Pods_Pet_Records.framework in Frameworks */,
+				CC01A7CD25A90A2000D3283C /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		178DF4FF7FDAE0D8491E4707 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				9F6FDBE3327CF0CA322AAA1A /* Pods-Pet Records.debug.xcconfig */,
-				417F959A40DBFA2F416F5D7E /* Pods-Pet Records.release.xcconfig */,
-			);
-			path = Pods;
-			sourceTree = "<group>";
-		};
 		CC0A234323E3871C003F1F8E = {
 			isa = PBXGroup;
 			children = (
 				CC0A234E23E3871C003F1F8E /* Pet Records */,
 				CC0A234D23E3871C003F1F8E /* Products */,
-				178DF4FF7FDAE0D8491E4707 /* Pods */,
 				D3218F301FE4C4BD044431B7 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -140,6 +135,7 @@
 		CC0A234E23E3871C003F1F8E /* Pet Records */ = {
 			isa = PBXGroup;
 			children = (
+				CC01A7CA25A90A1D00D3283C /* Pet Records.entitlements */,
 				CC4700CA25818DD500DB596F /* View */,
 				CC535D7825687C8800CDD229 /* Model */,
 				CCEBC61B245E38F600F4F86A /* Convenience */,
@@ -162,6 +158,7 @@
 		CC4700CA25818DD500DB596F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CC3F9FA92590B49300D53E2A /* PDFPreviewController.swift */,
 				CC4700D2258195BC00DB596F /* Authenticate */,
 				CC45C537244FD8DA00FC7679 /* Pets */,
 			);
@@ -173,7 +170,6 @@
 			children = (
 				CC0A235323E3871C003F1F8E /* WelcomeViewController.swift */,
 				7B43A13B2585C69000969605 /* PDFMaker.swift */,
-				CC3F9FA92590B49300D53E2A /* PDFPreviewController.swift */,
 				CC77854B25845BF100AAB503 /* TabBarViewController.swift */,
 				CC58577923E3ACCE000EF3B3 /* LogInViewController.swift */,
 				CC58577B23E3ACE1000EF3B3 /* SignUpViewController.swift */,
@@ -226,6 +222,9 @@
 			isa = PBXGroup;
 			children = (
 				CCBEF66025901C9900A571E7 /* AppointmentsTableViewCell.swift */,
+				CC6FF85A259D413400897CD4 /* MedicationTableViewCell.swift */,
+				CC6FF85E259D418300897CD4 /* GroomingTableviewCell.swift */,
+				CC6FF861259D41CD00897CD4 /* VaccineTableViewCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -260,7 +259,7 @@
 		D3218F301FE4C4BD044431B7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				6FECA4DCED89F36EFF406323 /* Pods_Pet_Records.framework */,
+				CC01A7CC25A90A2000D3283C /* CloudKit.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -272,11 +271,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CC0A236323E3871D003F1F8E /* Build configuration list for PBXNativeTarget "Pet Records" */;
 			buildPhases = (
-				72D31FBC6B92990475B344E1 /* [CP] Check Pods Manifest.lock */,
 				CC0A234823E3871C003F1F8E /* Sources */,
 				CC0A234923E3871C003F1F8E /* Frameworks */,
 				CC0A234A23E3871C003F1F8E /* Resources */,
-				2D6D7CDCBC72BCB79837D471 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -333,54 +330,13 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		2D6D7CDCBC72BCB79837D471 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pet Records/Pods-Pet Records-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Pet Records/Pods-Pet Records-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Pet Records/Pods-Pet Records-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		72D31FBC6B92990475B344E1 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Pet Records-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CC0A234823E3871C003F1F8E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				CC5B2CE2258EDDFE00565D1F /* AddGroomViewController.swift in Sources */,
+				CC6FF85F259D418300897CD4 /* GroomingTableviewCell.swift in Sources */,
 				CC58577C23E3ACE1000EF3B3 /* SignUpViewController.swift in Sources */,
 				CC9BD6E6242D7C5800082E9B /* HomeScreenViewController.swift in Sources */,
 				CC9BD6E8242D868000082E9B /* SignInButtonCustom.swift in Sources */,
@@ -392,6 +348,7 @@
 				CCEBC617245A45E500F4F86A /* AllAppointmentsViewController.swift in Sources */,
 				CC6672DA248700A700BB9E1F /* FullBackgroundImage.swift in Sources */,
 				CC45BA06244946CF008903C7 /* Extensions.swift in Sources */,
+				CC6FF862259D41CD00897CD4 /* VaccineTableViewCell.swift in Sources */,
 				CC5B2CDB258EDDD600565D1F /* AddVaccineViewController.swift in Sources */,
 				CCEBC5F62450510800F4F86A /* Groom.swift in Sources */,
 				CC77854C25845BF100AAB503 /* TabBarViewController.swift in Sources */,
@@ -404,6 +361,7 @@
 				CC0A235023E3871C003F1F8E /* AppDelegate.swift in Sources */,
 				CCBEF65B25901B7700A571E7 /* InjuriesTableViewController.swift in Sources */,
 				CC45CAEE24426E7200DBE5C9 /* UserProfileViewController.swift in Sources */,
+				CC6FF85B259D413400897CD4 /* MedicationTableViewCell.swift in Sources */,
 				CC4443EF24716127006C22C8 /* VaccinesTableViewController.swift in Sources */,
 				CCBEF6722590296200A571E7 /* Injury.swift in Sources */,
 				CC433780244E65C1007A9E04 /* Pet.swift in Sources */,
@@ -552,9 +510,9 @@
 		};
 		CC0A236423E3871D003F1F8E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9F6FDBE3327CF0CA322AAA1A /* Pods-Pet Records.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Pet Records/Pet Records.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD753K9SY2;
 				INFOPLIST_FILE = "Pet Records/SupportingFiles/Info.plist";
@@ -571,9 +529,9 @@
 		};
 		CC0A236523E3871D003F1F8E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 417F959A40DBFA2F416F5D7E /* Pods-Pet Records.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Pet Records/Pet Records.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZD753K9SY2;
 				INFOPLIST_FILE = "Pet Records/SupportingFiles/Info.plist";

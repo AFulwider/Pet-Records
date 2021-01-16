@@ -10,7 +10,7 @@
  Have image slowly fade in after screen loads
  */
 import UIKit
-import Firebase
+import CloudKit
 
 class WelcomeViewController: UIViewController {
     

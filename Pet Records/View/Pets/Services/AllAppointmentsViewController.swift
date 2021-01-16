@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import CloudKit
 
 class AllAppointmentsViewController: UITableViewController {
     

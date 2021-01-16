@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import CloudKit
 
 class InjuriesTableViewController: UITableViewController {
     
@@ -21,7 +21,7 @@ class InjuriesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addInjuriesButtonTapped))
-        tableView.register(MedicationTableviewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(MedicationTableViewCell.self, forCellReuseIdentifier: cellId)
         loadPetDetails()
     }
     
@@ -83,7 +83,7 @@ class InjuriesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicationTableviewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicationTableViewCell
         let injury = injuries[indexPath.row]
         cell.titleLabel.text = injury?.title
         cell.descriptionLabel.text = injury?.descriptionString

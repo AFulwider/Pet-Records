@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import CloudKit
 
 class VaccinesTableViewController: UITableViewController {
     
@@ -21,7 +21,7 @@ class VaccinesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addVaccineButtonTapped))
-        tableView.register(VacineTableViewCell.self, forCellReuseIdentifier: cellid)
+        tableView.register(VaccineTableViewCell.self, forCellReuseIdentifier: cellid)
         loadPetDetails()
     }
     
@@ -79,7 +79,7 @@ class VaccinesTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! VacineTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellid, for: indexPath) as! VaccineTableViewCell
         cell.titleLabel.text = vaccines[indexPath.row]?.title
         cell.timeLabel.text = vaccines[indexPath.row]?.vacDate
         return cell
@@ -98,37 +98,5 @@ class VaccinesTableViewController: UITableViewController {
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
         }
-    }
-}
-
-class VacineTableViewCell:UITableViewCell {
-    let titleLabel = UILabel()
-    let timeLabel = UILabel()
-    
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-        uiSetup()
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func uiSetup(){
-        addSubview(titleLabel)
-        addSubview(timeLabel)
-        
-        titleLabel.translatesAutoresizingMaskIntoConstraints  = false
-        timeLabel.translatesAutoresizingMaskIntoConstraints  = false
-        
-        titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 2).isActive = true
-        titleLabel.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        titleLabel.widthAnchor.constraint(equalToConstant: (frame.width/2)).isActive = true
-        titleLabel.adjustsFontSizeToFitWidth = true
-        
-        timeLabel.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 2).isActive = true
-        timeLabel.heightAnchor.constraint(equalToConstant: frame.height).isActive = true
-        timeLabel.widthAnchor.constraint(equalToConstant: (frame.width/4)).isActive = true
-        timeLabel.adjustsFontSizeToFitWidth = true
     }
 }

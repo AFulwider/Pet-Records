@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import Firebase
+import CloudKit
 
 class FoodTableViewController: UITableViewController {
     
@@ -21,7 +21,7 @@ class FoodTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: .add, style: .plain, target: self, action: #selector(addFoodButtonTapped))
-        tableView.register(MedicationTableviewCell.self, forCellReuseIdentifier: cellId)
+        tableView.register(MedicationTableViewCell.self, forCellReuseIdentifier: cellId)
         loadPetDetails()
     }
     
@@ -83,7 +83,7 @@ class FoodTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicationTableviewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath) as! MedicationTableViewCell
         let foo = food[indexPath.row]
         cell.titleLabel.text = foo?.title
         cell.descriptionLabel.text = foo?.descriptionString
